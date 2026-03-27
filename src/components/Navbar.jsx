@@ -53,7 +53,9 @@ export default function Navbar() {
         </div>
 
         <button className={styles.hamburger} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
-          <span className={menuOpen ? styles.hOpen : ''} /><span className={menuOpen ? styles.hOpen : ''} /><span className={menuOpen ? styles.hOpen : ''} />
+          <span className={menuOpen ? styles.hOpen : ''} />
+          <span className={menuOpen ? styles.hOpen : ''} />
+          <span className={menuOpen ? styles.hOpen : ''} />
         </button>
       </div>
     </nav>

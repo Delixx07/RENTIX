@@ -14,3 +14,15 @@
 .socialBtn:hover { border-color: #40A8C4; background: #e8f5f7; }
 .kycBanner { background: rgba(64,168,196,.08); border: 1px solid rgba(64,168,196,.2); border-radius: 12px; padding: 14px; display: flex; gap: 10px; margin-bottom: 20px; font-size: .8rem; color: #475569; line-height: 1.55; }
 .footer { text-align: center; margin-top: 18px; font-size: .82rem; color: #94a3b8; }
+
+/* ── MOBILE (≤480px) ── */
+@media (max-width: 480px) {
+  .card { padding: 24px 20px; border-radius: 20px; max-width: 100%; width: 100%; margin: 16px; }
+  .logo { margin-bottom: 20px; }
+  .logo img { height: 44px; }
+  .title { font-size: 1.35rem; }
+  .sub { margin-bottom: 20px; }
+  .authBtn { padding: 12px; font-size: .95rem; }
+  .socialBtn { font-size: .8rem; padding: 8px; }
+  .kycBanner { padding: 12px; font-size: .75rem; gap: 8px; }
+}

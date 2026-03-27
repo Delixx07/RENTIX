@@ -14,3 +14,26 @@
 .faqQ { width: 100%; padding: 18px 20px; background: none; border: none; text-align: left; font-size: .93rem; font-weight: 600; color: #235784; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Inter',sans-serif; }
 .faqQ span { font-size: 1.3rem; color: #40A8C4; }
 .faqA { padding: 0 20px 18px; font-size: .87rem; color: #475569; line-height: 1.7; }
+
+/* ── TABLET (≤768px) ── */
+@media (max-width: 768px) {
+  .header { padding: 48px 0 32px; }
+  .tabs { margin-bottom: 24px; }
+  .step { gap: 16px; padding: 20px 0; }
+  .stepNum { width: 40px; height: 40px; font-size: 1rem; }
+}
+
+/* ── MOBILE (≤480px) ── */
+@media (max-width: 480px) {
+  .header { padding: 36px 0 24px; }
+  .heroTitle { font-size: 1.5rem; margin: 8px 0; }
+  .heroSub { font-size: .85rem; line-height: 1.5; }
+  .tabs { flex-direction: column; gap: 4px; border-radius: 12px; }
+  .tab { padding: 10px; font-size: .85rem; border-radius: 8px; }
+  .step { flex-direction: column; gap: 10px; padding: 16px 0; }
+  .stepNum { width: 34px; height: 34px; font-size: .9rem; }
+  .stepTitle { font-size: .95rem; }
+  .stepDesc { font-size: .84rem; }
+  .faqQ { padding: 16px; font-size: .85rem; }
+  .faqA { padding: 0 16px 16px; font-size: .82rem; }
+}

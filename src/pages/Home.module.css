@@ -18,7 +18,7 @@
   position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
   align-items: center; padding-top: 80px; padding-bottom: 60px;
 }
-.heroContent {}
+
 .heroBadge {
   display: inline-flex; align-items: center; gap: 8px;
   background: rgba(247,170,0,.15); border: 1px solid rgba(247,170,0,.35);
@@ -145,5 +145,94 @@
 .ctaTitle { font-family: 'Outfit',sans-serif; font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 12px; }
 .ctaDesc { color: rgba(255,255,255,.7); font-size: 1rem; margin-bottom: 28px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7; }
 
-@media (max-width: 900px) { .heroInner { grid-template-columns: 1fr; } .heroVisual { display: none; } .howGrid { grid-template-columns: 1fr; } }
-@media (max-width: 560px) { .searchBar { flex-direction: column; } .sbDivider { display: none; } }
+/* ── TABLET (≤900px) ── */
+@media (max-width: 900px) {
+  .heroInner { grid-template-columns: 1fr; gap: 0; text-align: center; }
+  .heroVisual { display: none; }
+  .heroBadge { display: inline-flex; }
+  .heroDesc { max-width: 100%; }
+  .heroActions { justify-content: center; }
+  .heroStats { justify-content: center; }
+  .howGrid { grid-template-columns: 1fr; gap: 32px; }
+  .secGrid { grid-template-columns: 1fr; }
+  .reviewGrid { grid-template-columns: repeat(2, 1fr); }
+  .catGrid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ── TABLET SMALL (≤768px) ── */
+@media (max-width: 768px) {
+  .hero { min-height: auto; padding: 20px 0 0; }
+  .heroInner { padding-top: 50px; padding-bottom: 40px; }
+  .heroTitle { font-size: clamp(1.8rem, 5vw, 2.4rem); }
+  .heroDesc { font-size: .95rem; }
+  .heroStats { gap: 20px; }
+  .statNum { font-size: 1.4rem; }
+  .searchOuter { padding: 0 16px; }
+  .searchOuter .container { transform: translateY(-24px); }
+  .searchBar { gap: 10px; padding: 16px; border-radius: 16px; }
+  .sbField { min-width: 120px; }
+  .catGrid { grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .catIcon { width: 46px; height: 46px; font-size: 1.3rem; border-radius: 12px; }
+  .catCard { padding: 16px 10px; gap: 6px; }
+  .catName { font-size: .78rem; }
+  .catCount { display: none; }
+  .reviewGrid { grid-template-columns: 1fr; }
+  .ctaTitle { font-size: 1.5rem; }
+  .ctaBanner { padding: 48px 0; }
+  .catMini { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .catMiniCard { padding: 20px 16px; border-radius: 16px; }
+  .catMiniEmoji { font-size: 2rem; }
+}
+
+/* ── MOBILE PHONES (≤560px) ── */
+@media (max-width: 560px) {
+  .searchBar { flex-direction: column; gap: 8px; }
+  .sbDivider { display: none; }
+  .sbField { min-width: 100%; }
+  .sbBtn { width: 100%; justify-content: center; }
+}
+
+/* ── MOBILE PHONES (≤480px — Android/iPhone) ── */
+@media (max-width: 480px) {
+  .heroInner { padding-top: 36px; padding-bottom: 32px; }
+  .heroTitle { font-size: clamp(1.55rem, 7vw, 2rem); margin-bottom: 14px; }
+  .heroDesc { font-size: .88rem; line-height: 1.6; margin-bottom: 24px; }
+  .heroBadge { font-size: .72rem; padding: 5px 12px; margin-bottom: 16px; }
+  .heroActions { flex-direction: column; gap: 10px; margin-bottom: 32px; }
+  .heroStats { gap: 16px; }
+  .statNum { font-size: 1.25rem; }
+  .statLbl { font-size: .72rem; }
+  .searchOuter { padding: 0 14px; }
+  .searchOuter .container { transform: translateY(-20px); }
+  .searchBar { padding: 14px; border-radius: 14px; }
+  .sbInput { font-size: .9rem; }
+  .catGrid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .catIcon { width: 40px; height: 40px; font-size: 1.1rem; border-radius: 10px; }
+  .catCard { padding: 12px 6px; gap: 5px; border-radius: 10px; }
+  .catName { font-size: .72rem; }
+  .secGrid { grid-template-columns: 1fr; gap: 14px; }
+  .secCard { padding: 20px; border-radius: 16px; }
+  .secIcon { width: 52px; height: 52px; font-size: 1.5rem; border-radius: 14px; margin-bottom: 14px; }
+  .secTitle { font-size: .98rem; }
+  .howGrid { gap: 24px; }
+  .howStep { gap: 12px; margin-bottom: 16px; }
+  .howNum { width: 34px; height: 34px; font-size: .9rem; }
+  .catMini { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .catMiniCard { padding: 16px 12px; border-radius: 14px; }
+  .catMiniEmoji { font-size: 1.7rem; margin-bottom: 6px; }
+  .catMiniLabel { font-size: .85rem; }
+  .reviewGrid { grid-template-columns: 1fr; gap: 12px; }
+  .reviewCard { padding: 16px; border-radius: 12px; }
+  .ctaBanner { padding: 36px 0; }
+  .ctaTitle { font-size: 1.3rem; margin-bottom: 10px; }
+  .ctaDesc { font-size: .88rem; margin-bottom: 20px; }
+}
+
+/* ── SMALL PHONES (≤360px) ── */
+@media (max-width: 360px) {
+  .catGrid { grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .catCard { padding: 10px 4px; }
+  .catIcon { width: 36px; height: 36px; font-size: 1rem; }
+  .catName { font-size: .65rem; }
+}
+
