@@ -1,0 +1,10 @@
+.wrap { max-width: 800px; margin: 36px auto 60px; }
+.title { font-family: 'Outfit',sans-serif; font-size: 1.8rem; font-weight: 800; color: #235784; margin: 10px 0 8px; }
+.sub { font-size: .92rem; color: #64748b; }
+.card { background: #fff; border-radius: 20px; border: 1px solid #e2e8f0; padding: 32px; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.notice { background: rgba(35,87,132,.06); border: 1px solid rgba(35,87,132,.15); border-radius: 12px; padding: 16px; margin-bottom: 20px; font-size: .83rem; color: #475569; line-height: 1.65; }
+.submitBtn { width: 100%; padding: 14px; border: none; background: linear-gradient(135deg,#F7AA00,#f5c842); color: #1a3f63; border-radius: 14px; font-family: 'Outfit',sans-serif; font-size: 1rem; font-weight: 800; cursor: pointer; transition: all .25s; }
+.submitBtn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(247,170,0,.4); }
+@media (max-width: 600px) { .row, .row3 { grid-template-columns: 1fr; } }

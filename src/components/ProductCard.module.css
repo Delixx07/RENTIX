@@ -1,0 +1,38 @@
+.card {
+  background: #fff; border-radius: 14px; border: 1px solid #e2e8f0;
+  overflow: hidden; cursor: pointer; transition: all .25s; position: relative;
+}
+.card:hover { transform: translateY(-6px); box-shadow: 0 10px 40px rgba(35,87,132,.18); border-color: #BCDBDF; }
+.imgWrap { position: relative; background: #f8fafc; height: 200px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.img { max-height: 170px; max-width: 90%; object-fit: contain; transition: transform .25s; }
+.card:hover .img { transform: scale(1.05); }
+.badges { position: absolute; top: 12px; left: 12px; display: flex; flex-direction: column; gap: 6px; }
+.wishlistBtn {
+  position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border-radius: 50%;
+  background: #fff; border: none; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,.08); transition: all .25s; color: #94a3b8;
+}
+.wishlistBtn:hover { color: #ef4444; }
+.wishlistBtn.liked { color: #ef4444; }
+.info { padding: 16px; }
+.name { font-size: .95rem; font-weight: 700; color: #1e293b; margin-bottom: 6px; line-height: 1.3; }
+.meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.rating { display: flex; align-items: center; gap: 3px; font-size: .82rem; color: #F7AA00; font-weight: 600; }
+.ratingNum { color: #235784; font-size: .78rem; margin-left: 2px; }
+.reviews { font-size: .78rem; color: #94a3b8; }
+.verified { font-size: .75rem; font-weight: 600; color: #40A8C4; }
+.owner { font-size: .78rem; color: #64748b; display: flex; align-items: center; gap: 5px; margin-bottom: 12px; }
+.ownerAvatar {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: #BCDBDF; color: #235784; font-size: .65rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.priceRow { display: flex; align-items: flex-end; justify-content: space-between; }
+.price { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 800; color: #235784; }
+.price span { font-size: .75rem; font-weight: 500; color: #94a3b8; }
+.addBtn {
+  width: 34px; height: 34px; border-radius: 10px; border: none;
+  background: #235784; color: #fff; font-size: 1.3rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all .25s;
+}
+.addBtn:hover { background: #40A8C4; transform: scale(1.1); }

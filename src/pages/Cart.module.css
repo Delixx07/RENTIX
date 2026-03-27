@@ -1,0 +1,24 @@
+.cartPage { padding: 36px 0 60px; }
+.title { font-family: 'Outfit',sans-serif; font-size: 1.6rem; font-weight: 800; color: #235784; margin-bottom: 24px; }
+.grid { display: grid; grid-template-columns: 1fr 340px; gap: 28px; }
+.items { display: flex; flex-direction: column; gap: 16px; }
+.item { background: #fff; border-radius: 14px; border: 1px solid #e2e8f0; padding: 20px; display: flex; gap: 16px; align-items: flex-start; transition: all .25s; }
+.item:hover { box-shadow: var(--shadow-sm); }
+.itemImg { width: 90px; height: 90px; background: #f8fafc; border-radius: 12px; object-fit: contain; flex-shrink: 0; }
+.itemInfo { flex: 1; }
+.itemName { font-size: .95rem; font-weight: 700; color: #235784; margin-bottom: 4px; }
+.itemMeta { font-size: .82rem; color: #94a3b8; margin-bottom: 10px; }
+.itemPrice { font-family: 'Outfit',sans-serif; font-size: 1.05rem; font-weight: 800; color: #235784; }
+.qBtn { width: 30px; height: 30px; border-radius: 8px; border: 1.5px solid #e2e8f0; background: #fff; font-size: 1rem; font-weight: 700; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all .25s; color: #235784; }
+.qBtn:hover { border-color: #40A8C4; background: #e8f5f7; }
+.removeBtn { padding: 6px 12px; border: 1.5px solid #e2e8f0; border-radius: 8px; background: none; font-size: .8rem; color: #64748b; cursor: pointer; transition: all .25s; white-space: nowrap; }
+.removeBtn:hover { border-color: #ef4444; color: #ef4444; }
+.orderCard { background: #fff; border-radius: 14px; border: 1px solid #e2e8f0; padding: 24px; position: sticky; top: 90px; align-self: start; }
+.orderTitle { font-family: 'Outfit',sans-serif; font-size: 1.1rem; font-weight: 800; color: #235784; margin-bottom: 20px; }
+.orderRow { display: flex; justify-content: space-between; font-size: .88rem; margin-bottom: 12px; color: #475569; }
+.orderTotal { font-weight: 800; color: #235784; font-size: 1rem; border-top: 1px solid #e2e8f0; padding-top: 12px; margin-top: 4px; }
+.notice { background: rgba(35,87,132,.06); border: 1px solid rgba(35,87,132,.15); border-radius: 12px; padding: 12px; margin: 16px 0; display: flex; gap: 10px; align-items: flex-start; color: #235784; }
+.notice p { font-size: .8rem; line-height: 1.5; }
+.checkoutBtn { width: 100%; padding: 14px; border: none; background: linear-gradient(135deg,#235784,#40A8C4); color: #fff; border-radius: 14px; font-family: 'Outfit',sans-serif; font-size: 1rem; font-weight: 800; cursor: pointer; transition: all .25s; }
+.checkoutBtn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(35,87,132,.35); }
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } .orderCard { position: static; } }

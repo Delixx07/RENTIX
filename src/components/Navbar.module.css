@@ -1,0 +1,52 @@
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(35,87,132,.1);
+  transition: box-shadow .25s ease;
+}
+.navbar.scrolled { box-shadow: 0 4px 20px rgba(35,87,132,.12); }
+.inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 24px;
+  height: 72px; display: flex; align-items: center; gap: 32px;
+}
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+.logoImg { height: 40px; width: auto; }
+.logoText {
+  font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 800;
+  background: linear-gradient(135deg,#235784,#40A8C4);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.links { display: flex; align-items: center; gap: 4px; flex: 1; }
+.link {
+  padding: 8px 14px; font-size: .9rem; font-weight: 500; color: #475569;
+  border-radius: 8px; text-decoration: none; transition: all .25s;
+}
+.link:hover, .link.active { color: #235784; background: #e8f5f7; }
+.actions { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+.cartBtn {
+  position: relative; width: 42px; height: 42px; border-radius: 10px;
+  background: #f1f5f9; border: none; display: flex; align-items: center; justify-content: center;
+  color: #475569; transition: all .25s; cursor: pointer;
+}
+.cartBtn:hover { background: #BCDBDF; color: #235784; }
+.cartBadge {
+  position: absolute; top: -4px; right: -4px;
+  background: #F7AA00; color: #fff; font-size: .65rem; font-weight: 700;
+  width: 18px; height: 18px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 8px;
+}
+.hamburger span { display: block; width: 24px; height: 2px; background: #235784; border-radius: 2px; transition: all .3s; }
+@media (max-width: 768px) {
+  .links {
+    display: none; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0;
+    background: #fff; padding: 16px; border-bottom: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(35,87,132,.12);
+  }
+  .links.open { display: flex; }
+  .hamburger { display: flex; }
+  .actions a:not(.cartBtn) { display: none; }
+}

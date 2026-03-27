@@ -1,0 +1,29 @@
+.footer { background: #1a3f63; color: rgba(255,255,255,.7); padding: 60px 0 30px; }
+.grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+.brand p { font-size: .85rem; line-height: 1.7; margin-top: 12px; max-width: 280px; }
+.brandLogo { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.logoImg { height: 38px; }
+.logoText { font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 800; color: #fff; }
+.socials { display: flex; gap: 8px; margin-top: 16px; }
+.social {
+  width: 36px; height: 36px; background: rgba(255,255,255,.1); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  font-size: .9rem; transition: background .25s;
+}
+.social:hover { background: rgba(247,170,0,.2); }
+.col h4 { color: #fff; font-size: .88rem; font-weight: 700; margin-bottom: 16px; }
+.col a { display: block; font-size: .83rem; color: rgba(255,255,255,.55); margin-bottom: 10px; transition: color .25s; text-decoration: none; }
+.col a:hover { color: #F7AA00; }
+.bottom {
+  border-top: 1px solid rgba(255,255,255,.08); padding-top: 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; font-size: .8rem;
+}
+.badges { display: flex; gap: 10px; flex-wrap: wrap; }
+.badge {
+  display: flex; align-items: center; gap: 5px;
+  background: rgba(255,255,255,.07); padding: 5px 12px;
+  border-radius: 50px; font-size: .72rem; color: rgba(255,255,255,.7);
+}
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }

@@ -1,0 +1,16 @@
+.card { background: #fff; border-radius: 24px; padding: 40px; width: 420px; max-width: 95vw; box-shadow: 0 10px 40px rgba(35,87,132,.18); border: 1px solid #e2e8f0; }
+.logo { text-align: center; margin-bottom: 24px; }
+.logo img { height: 56px; margin: 0 auto; }
+.title { font-family: 'Outfit',sans-serif; font-size: 1.5rem; font-weight: 800; color: #235784; text-align: center; margin-bottom: 6px; }
+.sub { font-size: .87rem; color: #94a3b8; text-align: center; margin-bottom: 24px; }
+.link { color: #40A8C4; font-weight: 600; text-decoration: none; cursor: pointer; }
+.link:hover { text-decoration: underline; }
+.authBtn { width: 100%; padding: 13px; border: none; background: linear-gradient(135deg,#235784,#40A8C4); color: #fff; border-radius: 12px; font-family: 'Outfit',sans-serif; font-size: 1rem; font-weight: 800; cursor: pointer; transition: all .25s; margin-top: 6px; }
+.authBtn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(35,87,132,.35); }
+.divider { display: flex; align-items: center; gap: 12px; margin: 20px 0; }
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: #e2e8f0; }
+.divider span { font-size: .8rem; color: #94a3b8; }
+.socialBtn { padding: 10px; border: 1.5px solid #e2e8f0; border-radius: 10px; background: none; font-size: .85rem; font-weight: 600; cursor: pointer; color: #334155; transition: all .25s; font-family: 'Inter',sans-serif; }
+.socialBtn:hover { border-color: #40A8C4; background: #e8f5f7; }
+.kycBanner { background: rgba(64,168,196,.08); border: 1px solid rgba(64,168,196,.2); border-radius: 12px; padding: 14px; display: flex; gap: 10px; margin-bottom: 20px; font-size: .8rem; color: #475569; line-height: 1.55; }
+.footer { text-align: center; margin-top: 18px; font-size: .82rem; color: #94a3b8; }
