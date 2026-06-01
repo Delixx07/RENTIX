@@ -1,19 +1,32 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
-import { PRODUCTS, CATEGORIES, fmt, BADGE_MAP } from '../data/products';
+import { useSearchParams } from 'react-router-dom';
+import { CATEGORIES } from '../data/products';
+import { fetchProducts } from '../lib/api';
 import ProductCard from '../components/ProductCard';
 import Footer from '../components/Footer';
+import Icon from '../components/Icon';
 import styles from './Browse.module.css';
+
+const SECURITY_FILTERS = [
+  { label: 'Rentix Protected', defaultChecked: true },
+  { label: 'Pemilik Terverifikasi', defaultChecked: true },
+  { label: 'Rating 4,5+', defaultChecked: false },
+];
 
 export default function Browse() {
   const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
   const [search, setSearch] = useState(searchParams.get('q') || '');
   const [cat, setCat] = useState(searchParams.get('cat') || 'all');
   const [sort, setSort] = useState('popular');
   const [maxPrice, setMaxPrice] = useState(500000);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const filtered = PRODUCTS
+  useEffect(() => {
+    fetchProducts().then((p) => { setProducts(p); setLoading(false); });
+  }, []);
+
+  const filtered = products
     .filter(p => cat === 'all' || p.cat === cat)
     .filter(p => !search || p.name.toLowerCase().includes(search.toLowerCase()))
     .filter(p => p.price <= maxPrice)
@@ -34,7 +47,7 @@ export default function Browse() {
               <p className={styles.subtitle}>Temukan gadget terbaik untukmu</p>
             </div>
             <div className={styles.searchWrap}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <Icon name="search" size={18} />
               <input placeholder="Cari nama produk..." value={search} onChange={e => setSearch(e.target.value)} />
             </div>
           </div>
@@ -50,7 +63,7 @@ export default function Browse() {
               <div className={styles.chips}>
                 {CATEGORIES.map(c => (
                   <button key={c.id} className={`${styles.chip} ${cat === c.id ? styles.active : ''}`} onClick={() => setCat(c.id)}>
-                    {c.icon} {c.name}
+                    <Icon name={c.icon} size={15} /> {c.name}
                   </button>
                 ))}
               </div>
@@ -65,8 +78,8 @@ export default function Browse() {
             </div>
             <div className={styles.filterCard}>
               <div className={styles.filterTitle}>Keamanan</div>
-              {['🛡️ Rentix Protected','✅ Pemilik Terverifikasi','⭐ Rating 4.5+'].map(f => (
-                <label key={f} className={styles.chk}><input type="checkbox" defaultChecked={f.includes('Protected')||f.includes('Terverifikasi')} /><span>{f}</span></label>
+              {SECURITY_FILTERS.map(f => (
+                <label key={f.label} className={styles.chk}><input type="checkbox" defaultChecked={f.defaultChecked} /><span>{f.label}</span></label>
               ))}
             </div>
             <div className={styles.filterCard}>
@@ -75,7 +88,9 @@ export default function Browse() {
                 <label key={f} className={styles.chk}><input type="checkbox" defaultChecked={f.includes('Sekarang')} /><span>{f}</span></label>
               ))}
             </div>
-            <button className={styles.clearBtn} onClick={() => { setCat('all'); setSearch(''); setMaxPrice(500000); }}>🔄 Reset Filter</button>
+            <button className={styles.clearBtn} onClick={() => { setCat('all'); setSearch(''); setMaxPrice(500000); }}>
+              <Icon name="refresh" size={16} /> Reset Filter
+            </button>
           </aside>
 
           {/* RESULTS */}
@@ -89,13 +104,15 @@ export default function Browse() {
                 <option value="price-desc">Harga Tertinggi</option>
               </select>
             </div>
-            {filtered.length > 0 ? (
+            {loading ? (
+              <div className="empty-state"><div className="es-icon"><Icon name="box" size={40} /></div><h3>Memuat produk…</h3></div>
+            ) : filtered.length > 0 ? (
               <div className="product-grid">
                 {filtered.map(p => <ProductCard key={p.id} product={p} />)}
               </div>
             ) : (
               <div className="empty-state">
-                <div className="es-icon">🔍</div>
+                <div className="es-icon"><Icon name="search" size={40} /></div>
                 <h3>Tidak ada hasil</h3>
                 <p>Coba ubah kata kunci atau filter</p>
               </div>

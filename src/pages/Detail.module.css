@@ -16,10 +16,12 @@
 .reviewDate { font-size: .75rem; color: #94a3b8; margin-left: auto; }
 .reviewText { font-size: .84rem; color: #475569; line-height: 1.65; }
 .detailBadges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
-.dbProtection { padding: 4px 10px; border-radius: 50px; background: rgba(35,87,132,.08); color: #235784; border: none; font-size: .75rem; font-weight: 600; cursor: pointer; transition: all .25s; }
+.dbProtection { display: inline-flex; align-items: center; gap: 5px; padding: 4px 11px; border-radius: 50px; background: rgba(35,87,132,.08); color: #235784; border: none; font-size: .75rem; font-weight: 600; cursor: pointer; transition: all .25s; }
 .dbProtection:hover { background: rgba(35,87,132,.15); }
-.dbKyc { padding: 4px 10px; border-radius: 50px; background: rgba(64,168,196,.1); color: #40A8C4; font-size: .75rem; font-weight: 600; }
-.dbWipe { padding: 4px 10px; border-radius: 50px; background: rgba(247,170,0,.1); color: #d98f00; font-size: .75rem; font-weight: 600; }
+.dbKyc { display: inline-flex; align-items: center; gap: 5px; padding: 4px 11px; border-radius: 50px; background: rgba(64,168,196,.1); color: #40A8C4; font-size: .75rem; font-weight: 600; }
+.dbWipe { display: inline-flex; align-items: center; gap: 5px; padding: 4px 11px; border-radius: 50px; background: rgba(247,170,0,.1); color: #d98f00; font-size: .75rem; font-weight: 600; }
+.inStock { display: inline-flex; align-items: center; color: #16a34a; font-weight: 600; font-size: .85rem; }
+.outStock { display: inline-flex; align-items: center; color: #ef4444; font-weight: 600; font-size: .85rem; }
 .name { font-family: 'Outfit',sans-serif; font-size: 1.7rem; font-weight: 800; color: #235784; margin-bottom: 10px; line-height: 1.2; }
 .ratingRow { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; font-size: .9rem; flex-wrap: wrap; }
 .desc { font-size: .9rem; color: #475569; line-height: 1.75; margin-bottom: 22px; }
@@ -31,7 +33,18 @@
 .ownerAvatar { width: 44px; height: 44px; border-radius: 50%; background: #BCDBDF; color: #235784; font-size: 1.1rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .ownerName { font-size: .9rem; font-weight: 700; color: #235784; }
 .ownerMeta { font-size: .77rem; color: #94a3b8; }
-.ownerVerified { font-size: .75rem; font-weight: 600; color: #40A8C4; }
+.ownerVerified { display: inline-flex; align-items: center; gap: 4px; font-size: .75rem; font-weight: 600; color: #40A8C4; }
+
+/* REVIEW FORM */
+.reviewForm { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 16px; padding: 18px; margin-bottom: 16px; }
+.reviewFormTitle { font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+.starPicker { display: flex; gap: 4px; margin-bottom: 12px; }
+.starBtn { background: none; border: none; padding: 0; cursor: pointer; color: var(--gray-200); transition: color .15s; line-height: 0; }
+.starBtn:hover, .starActive { color: var(--amber); }
+.noReviews { color: var(--gray-400); font-size: .88rem; margin: 12px 0; }
+.modalBtn { width: 100%; padding: 13px; border: none; background: linear-gradient(135deg,#235784,#40A8C4); color: #fff; border-radius: 12px; font-family: 'Outfit',sans-serif; font-size: 1rem; font-weight: 800; cursor: pointer; margin-top: 16px; transition: all .25s; }
+.modalBtn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(35,87,132,.3); }
+.sumIcon { display: inline-flex; align-items: center; gap: 5px; }
 /* BOOKING */
 .bookCard { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 20px; padding: 22px; box-shadow: 0 4px 20px rgba(35,87,132,.12); position: sticky; top: 80px; }
 .bookPrice { margin-bottom: 18px; }
@@ -54,7 +67,7 @@
 .sumRow { display: flex; justify-content: space-between; font-size: .84rem; margin-bottom: 8px; color: #475569; }
 .sumTotal { font-weight: 800; color: #235784; font-size: .94rem; border-top: 1px solid #e2e8f0; padding-top: 8px; margin-top: 4px; margin-bottom: 0; }
 .proBadge { background: rgba(35,87,132,.1); color: #235784; font-size: .7rem; font-weight: 700; padding: 2px 7px; border-radius: 50px; }
-.bookBtn { width: 100%; padding: 13px; border: none; background: linear-gradient(135deg,#F7AA00,#f5c842); color: #1a3f63; border-radius: 13px; font-family: 'Outfit',sans-serif; font-size: .98rem; font-weight: 800; cursor: pointer; transition: all .25s; box-shadow: 0 4px 16px rgba(247,170,0,.3); }
+.bookBtn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 13px; border: none; background: linear-gradient(135deg,#F7AA00,#f5c842); color: #1a3f63; border-radius: 13px; font-family: 'Outfit',sans-serif; font-size: .98rem; font-weight: 800; cursor: pointer; transition: all .25s; box-shadow: 0 4px 16px rgba(247,170,0,.3); }
 .bookBtn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(247,170,0,.4); }
 .bookGuarantee { display: flex; align-items: center; gap: 8px; font-size: .76rem; color: #94a3b8; margin-top: 10px; justify-content: center; }
 

@@ -1,0 +1,31 @@
+.header { background: linear-gradient(135deg,#1a3f63,#235784); padding: 60px 0 48px; text-align: center; }
+.heroTitle { font-family: 'Outfit',sans-serif; font-size: 2.1rem; font-weight: 800; color: #fff; margin: 12px 0 10px; }
+.heroSub { color: rgba(255,255,255,.72); max-width: 520px; margin: 0 auto 28px; font-size: .96rem; line-height: 1.7; }
+
+.heroStats { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+.statNum { font-family: 'Outfit',sans-serif; font-size: 1.6rem; font-weight: 800; color: #F7AA00; }
+.statLbl { font-size: .8rem; color: rgba(255,255,255,.65); margin-top: 2px; }
+
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.card { background: #fff; border: 1px solid var(--gray-200); border-radius: 18px; padding: 28px 24px; transition: var(--transition); }
+.card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--mist); }
+.icon { width: 54px; height: 54px; border-radius: 14px; background: var(--mist-lt); color: var(--navy); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.cardTitle { font-family: 'Outfit',sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.cardDesc { font-size: .87rem; color: var(--gray-600); line-height: 1.65; }
+
+.reportCard { background: #fff; border: 1px solid var(--gray-200); border-radius: 18px; padding: 28px; box-shadow: var(--shadow-sm); }
+.contactRow { text-align: center; font-size: .84rem; color: var(--gray-500); margin-top: 16px; }
+.link { color: var(--sky); font-weight: 600; }
+
+@media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) {
+  .header { padding: 48px 0 36px; }
+  .heroStats { gap: 28px; }
+}
+@media (max-width: 560px) {
+  .grid { grid-template-columns: 1fr; }
+  .heroTitle { font-size: 1.6rem; }
+  .heroStats { gap: 18px; }
+  .statNum { font-size: 1.3rem; }
+  .reportCard { padding: 20px; }
+}

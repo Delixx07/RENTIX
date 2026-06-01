@@ -25,6 +25,16 @@
 }
 .link:hover, .link.active { color: #235784; background: #e8f5f7; }
 .actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.mobileOnly { display: none; }
+.profileBtn { display: flex; align-items: center; justify-content: center; text-decoration: none; }
+.profileAvatar {
+  width: 42px; height: 42px; border-radius: 10px;
+  background: linear-gradient(135deg,#235784,#40A8C4); color: #fff;
+  font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.05rem;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  transition: all .25s;
+}
+.profileAvatar:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(35,87,132,.35); }
 .cartBtn {
   position: relative; width: 42px; height: 42px; border-radius: 10px;
   background: #f1f5f9; border: none; display: flex; align-items: center; justify-content: center;
@@ -70,6 +80,7 @@
   }
   .links.open { display: flex; }
   .link { padding: 12px 16px; border-radius: 12px; font-size: .95rem; }
+  .mobileOnly { display: block; border-top: 1px solid #f1f5f9; }
 
   .hamburger { display: flex; }
   .actions .authLinks { display: none; }

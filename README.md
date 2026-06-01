@@ -10,31 +10,54 @@ Rentix adalah platform marketplace penyewaan gadget dan peralatan penunjang even
 
 ## Fitur Utama
 
-- 🔍 **Browse & Filter** — Temukan gadget berdasarkan kategori, harga, rating, dan ketersediaan
-- 📦 **Detail Produk** — Galeri, spesifikasi lengkap, dan booking card interaktif
-- 🛒 **Keranjang** — Ringkasan pesanan dengan kalkulasi asuransi otomatis
-- 📝 **Sewakan Barangmu** — Form pendaftaran produk untuk pemilik
-- 🔐 **E-KYC Verification** — Verifikasi identitas aman via biometrik
-- 🛡️ **Rentix Protection** — Asuransi otomatis 5% per transaksi
-- 🗑️ **Data Wipe Protocol** — Privasi terjamin setelah sewa selesai
+- 🔍 **Browse & Filter** — Temukan gadget berdasarkan kategori, harga, rating, dan ketersediaan (data dari database)
+- 📦 **Detail Produk** — Galeri, spesifikasi, booking card + form ulasan
+- 🛒 **Keranjang & Checkout** — Membuat transaksi sewa tersimpan di database (escrow)
+- 📝 **Sewakan Barangmu** — Pemilik mendaftarkan produk → tersimpan ke database
+- 🔐 **Auth + E-KYC** — Register/login nyata (Supabase Auth) + status verifikasi tersimpan per user
+- ⭐ **Rating Dua Arah** — Penyewa & pemilik saling memberi ulasan
+- 🛡️ **Rentix Protection** — Asuransi otomatis 5% per transaksi (insurance margin)
+- 🎓 **Promo Mahasiswa & B2B Kampus** — Kode promo + kemitraan organisasi kampus
+- ⭐ **Premium Vendor Listing** — Vendor premium tampil teratas (revenue stream)
+- 🤝 **Trust & Safety Center** — Pusat bantuan 24/7 + form laporan
+- 📊 **Dashboard** — Riwayat sewa, verifikasi E-KYC & KTM, statistik akun
 
 ## Tech Stack
 
-- **React 18** + **Vite**
-- **React Router DOM v6** — Client-side routing
-- **Zustand** — State management (cart, wishlist, modal, toast)
+- **React 19** + **Vite**
+- **React Router DOM v7** — Client-side routing
+- **Zustand** — State management (auth, cart, wishlist, modal, toast)
+- **Supabase** — Backend: Postgres database + Auth + Row Level Security
 - **CSS Modules** — Component-scoped styling
-- **Google Fonts** — Inter & Outfit
+
+## Backend Setup (Supabase)
+
+1. Buat project di [supabase.com](https://supabase.com).
+2. Salin `.env.example` → `.env` dan isi:
+   ```
+   VITE_SUPABASE_URL=https://<project>.supabase.co
+   VITE_SUPABASE_ANON_KEY=<anon public key>
+   ```
+   (Project Settings → API)
+3. Buka **SQL Editor** di dashboard Supabase, tempel isi [`supabase/schema.sql`](supabase/schema.sql), lalu **Run**.
+   Ini membuat tabel `profiles`, `products`, `rentals`, `reviews`, `promos`, RLS, trigger profil otomatis, dan seed data.
+4. (Opsional) Di **Authentication → Providers → Email**, matikan "Confirm email" agar bisa langsung login saat demo.
+
+> Tanpa `.env`/skema, aplikasi tetap berjalan memakai data statis sebagai fallback. Auth & penyimpanan transaksi aktif setelah langkah di atas selesai.
 
 ## Project Structure
 
 ```
 src/
 ├── components/     # Navbar, Footer, ProductCard, Toast, Modal
-├── pages/          # Home, Browse, Detail, Cart, ListItem, HowItWorks, Login, Register
-├── data/           # Product catalog & categories
-├── store/          # Zustand global store
+├── pages/          # Home, Browse, Detail, Cart, ListItem, HowItWorks,
+│                   # Login, Register, Trust, Promo, Dashboard
+├── lib/            # supabase.js (client), api.js (data layer + fallback)
+├── data/           # Static fallback catalog & helpers
+├── store/          # Zustand store (auth + cart + UI)
 └── index.css       # Global styles & CSS variables
+supabase/
+└── schema.sql      # Database schema + RLS + seed
 public/
 └── logo.png + product images
 ```
@@ -42,14 +65,9 @@ public/
 ## Getting Started
 
 ```bash
-# Install dependencies
-npm install
-
-# Start dev server
-npm run dev
-
-# Build for production
-npm run build
+npm install      # Install dependencies
+npm run dev      # Start dev server
+npm run build    # Build for production
 ```
 
 ## Halaman Tersedia
@@ -58,12 +76,14 @@ npm run build
 |---|---|
 | `/` | Beranda (Home) |
 | `/browse` | Jelajahi Produk |
-| `/product/:id` | Detail Produk |
-| `/cart` | Keranjang |
+| `/product/:id` | Detail Produk + Ulasan |
+| `/cart` | Keranjang & Checkout |
 | `/list-item` | Sewakan Barangmu |
+| `/promo` | Promo Mahasiswa & B2B Kampus |
+| `/trust` | Trust & Safety Center |
 | `/how-it-works` | Cara Kerja |
-| `/login` | Masuk |
-| `/register` | Daftar |
+| `/dashboard` | Dashboard pengguna (riwayat sewa, verifikasi) |
+| `/login` · `/register` | Masuk · Daftar |
 
 ---
 

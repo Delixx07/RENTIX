@@ -7,7 +7,9 @@
 .itemImg { width: 80px; height: 80px; background: #f8fafc; border-radius: 10px; object-fit: contain; flex-shrink: 0; }
 .itemInfo { flex: 1; min-width: 0; }
 .itemName { font-size: .92rem; font-weight: 700; color: #235784; margin-bottom: 4px; }
-.itemMeta { font-size: .78rem; color: #94a3b8; margin-bottom: 8px; }
+.itemMeta { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; font-size: .78rem; color: #94a3b8; margin-bottom: 8px; }
+.metaDot { color: #cbd5e1; }
+.rowIcon { display: inline-flex; align-items: center; gap: 5px; }
 .itemPrice { font-family: 'Outfit',sans-serif; font-size: 1rem; font-weight: 800; color: #235784; }
 .qBtn { width: 30px; height: 30px; border-radius: 8px; border: 1.5px solid #e2e8f0; background: #fff; font-size: 1rem; font-weight: 700; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all .25s; color: #235784; }
 .qBtn:hover { border-color: #40A8C4; background: #e8f5f7; }
@@ -19,7 +21,7 @@
 .orderTotal { font-weight: 800; color: #235784; font-size: .96rem; border-top: 1px solid #e2e8f0; padding-top: 10px; margin-top: 4px; }
 .notice { background: rgba(35,87,132,.06); border: 1px solid rgba(35,87,132,.15); border-radius: 12px; padding: 12px; margin: 14px 0; display: flex; gap: 10px; align-items: flex-start; color: #235784; }
 .notice p { font-size: .78rem; line-height: 1.5; }
-.checkoutBtn { width: 100%; padding: 13px; border: none; background: linear-gradient(135deg,#235784,#40A8C4); color: #fff; border-radius: 13px; font-family: 'Outfit',sans-serif; font-size: .96rem; font-weight: 800; cursor: pointer; transition: all .25s; }
+.checkoutBtn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 13px; border: none; background: linear-gradient(135deg,#235784,#40A8C4); color: #fff; border-radius: 13px; font-family: 'Outfit',sans-serif; font-size: .96rem; font-weight: 800; cursor: pointer; transition: all .25s; }
 .checkoutBtn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(35,87,132,.35); }
 
 /* ── TABLET (≤900px) ── */

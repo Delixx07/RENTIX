@@ -1,5 +1,12 @@
 import { Link } from 'react-router-dom';
+import Icon from './Icon';
 import styles from './Footer.module.css';
+
+const TRUST_BADGES = [
+  { icon: 'shield', label: 'Rentix Protected' },
+  { icon: 'checkCircle', label: 'E-KYC Verified' },
+  { icon: 'lock', label: 'SSL Secured' },
+];
 
 export default function Footer() {
   return (
@@ -13,7 +20,9 @@ export default function Footer() {
             </div>
             <p>Platform marketplace penyewaan gadget dan peralatan event terpercaya. Sewa aman, pakai nyaman.</p>
             <div className={styles.socials}>
-              {['📘','📸','🐦','▶️'].map((ic,i) => <span key={i} className={styles.social}>{ic}</span>)}
+              {['Instagram', 'TikTok', 'X', 'YouTube'].map((label) => (
+                <span key={label} className={styles.social} title={label}>{label[0]}</span>
+              ))}
             </div>
           </div>
           <div className={styles.col}>
@@ -35,18 +44,18 @@ export default function Footer() {
           <div className={styles.col}>
             <h4>Dukungan</h4>
             <Link to="/how-it-works">Cara Kerja</Link>
-            <a href="#">Rentix Protection</a>
-            <a href="#">Verifikasi E-KYC</a>
-            <a href="#">Pusat Bantuan</a>
+            <Link to="/trust">Trust & Safety Center</Link>
+            <Link to="/promo">Promo Mahasiswa</Link>
+            <Link to="/trust">Pusat Bantuan 24/7</Link>
             <a href="#">Kebijakan Privasi</a>
           </div>
         </div>
         <div className={styles.bottom}>
-          <span>© 2025 Rentix. Semua hak dilindungi.</span>
+          <span>© 2026 Rentix. Semua hak dilindungi.</span>
           <div className={styles.badges}>
-            <span className={styles.badge}>🛡️ Rentix Protected</span>
-            <span className={styles.badge}>✅ E-KYC Verified</span>
-            <span className={styles.badge}>🔒 SSL Secured</span>
+            {TRUST_BADGES.map((b) => (
+              <span key={b.label} className={styles.badge}><Icon name={b.icon} size={14} /> {b.label}</span>
+            ))}
           </div>
         </div>
       </div>

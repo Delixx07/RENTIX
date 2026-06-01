@@ -1,0 +1,44 @@
+.header { background: linear-gradient(135deg,#1a3f63,#235784); padding: 48px 0 36px; }
+.headInner { display: flex; align-items: center; gap: 20px; }
+.avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--amber); color: var(--navy); font-family: 'Outfit',sans-serif; font-size: 1.6rem; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.name { font-family: 'Outfit',sans-serif; font-size: 1.5rem; font-weight: 800; color: #fff; }
+.email { color: rgba(255,255,255,.7); font-size: .88rem; margin-top: 2px; }
+.tags { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.tag { display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,.12); color: #fff; font-size: .78rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; }
+.logoutBtn { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.12); color: #fff; border: 1px solid rgba(255,255,255,.25); border-radius: 10px; padding: 9px 18px; font-weight: 600; cursor: pointer; transition: var(--transition); }
+.logoutBtn:hover { background: rgba(255,255,255,.22); }
+
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
+.statCard { background: #fff; border: 1px solid var(--gray-200); border-radius: 16px; padding: 20px 22px; box-shadow: var(--shadow-sm); }
+.statVal { font-family: 'Outfit',sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--navy); }
+.statLbl { font-size: .82rem; color: var(--gray-500); margin-top: 4px; }
+
+.verifyGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 36px; }
+.verifyCard { background: #fff; border: 1px solid var(--gray-200); border-radius: 16px; padding: 22px; }
+.vTitle { display: flex; align-items: center; gap: 8px; font-family: 'Outfit',sans-serif; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.vDesc { font-size: .85rem; color: var(--gray-600); line-height: 1.6; margin-bottom: 16px; }
+.vDone { display: inline-flex; align-items: center; gap: 6px; color: #16a34a; font-weight: 700; font-size: .9rem; }
+
+.sectionTitle { font-family: 'Outfit',sans-serif; font-size: 1.25rem; font-weight: 800; color: var(--navy); margin-bottom: 16px; }
+.rentalList { display: flex; flex-direction: column; gap: 12px; }
+.rental { display: flex; align-items: center; gap: 16px; background: #fff; border: 1px solid var(--gray-200); border-radius: 14px; padding: 16px 20px; }
+.rName { font-weight: 700; color: var(--navy); font-size: .95rem; }
+.rMeta { font-size: .82rem; color: var(--gray-500); margin-top: 3px; }
+.status { font-size: .76rem; font-weight: 700; padding: 4px 12px; border-radius: 20px; text-transform: capitalize; }
+.stWait { background: #fef9c3; color: #a16207; }
+.stEscrow { background: var(--mist-lt); color: var(--sky); }
+.stRun { background: #dbeafe; color: #1d4ed8; }
+.stDone { background: #dcfce7; color: #16a34a; }
+.stCancel { background: #fee2e2; color: #dc2626; }
+.rTotal { font-family: 'Outfit',sans-serif; font-weight: 800; color: var(--navy); min-width: 110px; text-align: right; }
+
+@media (max-width: 768px) {
+  .stats { grid-template-columns: 1fr; }
+  .verifyGrid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .headInner { flex-wrap: wrap; }
+  .name { font-size: 1.25rem; }
+  .rental { flex-wrap: wrap; }
+  .rTotal { min-width: 0; text-align: left; }
+}

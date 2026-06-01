@@ -1,54 +1,72 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useStore from '../store/useStore';
 import { fmt, BADGE_MAP } from '../data/products';
+import Icon from './Icon';
+import Stars from './Stars';
 import styles from './ProductCard.module.css';
 
-export default function ProductCard({ product: p }) {
-  const { cart, addToCart, toggleWishlist, wishlist } = useStore();
-  const liked = wishlist.includes(p.id);
+export default function ProductCard({ product }) {
+  const { addToCart, toggleWishlist, wishlist } = useStore();
   const navigate = useNavigate();
+  const liked = wishlist.includes(product.id);
+
+  const openDetail = () => navigate(`/product/${product.id}`);
+  const handleWishlist = (e) => { e.stopPropagation(); toggleWishlist(product.id); };
+  const handleAdd = (e) => { e.stopPropagation(); addToCart(product); };
 
   return (
-    <div className={styles.card} onClick={() => navigate(`/product/${p.id}`)}>
+    <div className={styles.card} onClick={openDetail}>
       <div className={styles.imgWrap}>
-        <img src={p.img} alt={p.name} className={styles.img} loading="lazy" />
+        <img src={product.img} alt={product.name} className={styles.img} loading="lazy" />
+
         <div className={styles.badges}>
-          {p.badges.map(b => (
-            <span key={b} className={`badge ${BADGE_MAP[b]?.cls}`}>{BADGE_MAP[b]?.label}</span>
-          ))}
+          {product.isPremium && (
+            <span className="badge badge-premium"><Icon name="star" size={11} /> Premium</span>
+          )}
+          {product.badges.map((key) => {
+            const badge = BADGE_MAP[key];
+            if (!badge) return null;
+            return (
+              <span key={key} className={`badge ${badge.cls}`}>
+                <Icon name={badge.icon} size={11} /> {badge.label}
+              </span>
+            );
+          })}
         </div>
+
         <button
           className={`${styles.wishlistBtn} ${liked ? styles.liked : ''}`}
-          onClick={e => { e.stopPropagation(); toggleWishlist(p.id); }}
-          aria-label="Wishlist"
+          onClick={handleWishlist}
+          aria-label="Tambah ke wishlist"
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill={liked ? '#ef4444' : 'none'} stroke={liked ? '#ef4444' : 'currentColor'} strokeWidth="2">
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-          </svg>
+          <Icon name="heart" size={16} style={{ fill: liked ? 'currentColor' : 'none' }} />
         </button>
       </div>
+
       <div className={styles.info}>
-        <div className={styles.name}>{p.name}</div>
+        <div className={styles.name}>{product.name}</div>
+
         <div className={styles.meta}>
           <div className={styles.rating}>
-            {'★'.repeat(Math.round(p.rating))}{'★'.repeat(5 - Math.round(p.rating)).replace(/★/g, '☆')}
-            <span className={styles.ratingNum}>{p.rating}</span>
+            <Stars value={product.rating} size={13} />
+            <span className={styles.ratingNum}>{product.rating}</span>
           </div>
-          <span className={styles.reviews}>({p.reviews})</span>
-          {p.ownerVerified && <span className={styles.verified}>✓ Terverifikasi</span>}
+          <span className={styles.reviews}>({product.reviews})</span>
+          {product.ownerVerified && (
+            <span className={styles.verified}><Icon name="checkCircle" size={12} /> Terverifikasi</span>
+          )}
         </div>
+
         <div className={styles.owner}>
-          <span className={styles.ownerAvatar}>{p.owner[0]}</span>
-          {p.owner}
+          <span className={styles.ownerAvatar}>{product.owner[0]}</span>
+          {product.owner}
         </div>
+
         <div className={styles.priceRow}>
-          <div className={styles.price}>{fmt(p.price)} <span>/ hari</span></div>
-          <button
-            className={styles.addBtn}
-            onClick={e => { e.stopPropagation(); addToCart(p); }}
-            aria-label="Tambah ke keranjang"
-          >+</button>
+          <div className={styles.price}>{fmt(product.price)} <span>/ hari</span></div>
+          <button className={styles.addBtn} onClick={handleAdd} aria-label="Tambah ke keranjang">
+            <Icon name="plus" size={18} />
+          </button>
         </div>
       </div>
     </div>

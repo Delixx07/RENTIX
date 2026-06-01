@@ -2,10 +2,14 @@
 .grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
 .logoText { font-family: 'Outfit',sans-serif; font-size: 1.6rem; font-weight: 800; color: #fff; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
 .logoImg { height: 36px; }
-.desc { line-height: 1.6; margin-bottom: 20px; max-width: 300px; }
-.social { display: flex; gap: 12px; }
-.scBtn { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; transition: all .25s; font-size: 1.1rem; }
-.scBtn:hover { background: #40A8C4; border-color: #40A8C4; transform: translateY(-2px); }
+.brand p { line-height: 1.6; margin-bottom: 20px; max-width: 300px; }
+.brandLogo { display: flex; align-items: center; gap: 10px; }
+.col h4 { font-family: 'Outfit',sans-serif; font-size: 1.02rem; font-weight: 700; color: #fff; margin-bottom: 16px; }
+.col a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; transition: all .25s; }
+.col a:hover { color: #40A8C4; padding-left: 4px; }
+.socials { display: flex; gap: 10px; }
+.social { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: .9rem; cursor: pointer; transition: all .25s; }
+.social:hover { background: #40A8C4; border-color: #40A8C4; transform: translateY(-2px); }
 .colTitle { font-family: 'Outfit',sans-serif; font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 16px; }
 .links { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
 .links a { color: #94a3b8; text-decoration: none; transition: all .25s; }

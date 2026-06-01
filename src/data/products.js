@@ -1,12 +1,13 @@
+// `icon` references a name in the central Icon component (see components/Icon.jsx).
 export const CATEGORIES = [
-  { id: 'all', name: 'Semua', icon: '📦', count: 42 },
-  { id: 'camera', name: 'Kamera', icon: '📷', count: 14 },
-  { id: 'laptop', name: 'Laptop', icon: '💻', count: 11 },
-  { id: 'projector', name: 'Proyektor', icon: '📽️', count: 6 },
-  { id: 'audio', name: 'Audio', icon: '🎙️', count: 5 },
-  { id: 'drone', name: 'Drone', icon: '🚁', count: 4 },
-  { id: 'stabilizer', name: 'Gimbal', icon: '🎬', count: 7 },
-  { id: 'ht', name: 'Handy Talky', icon: '📻', count: 5 },
+  { id: 'all', name: 'Semua', icon: 'box', count: 42 },
+  { id: 'camera', name: 'Kamera', icon: 'camera', count: 14 },
+  { id: 'laptop', name: 'Laptop', icon: 'laptop', count: 11 },
+  { id: 'projector', name: 'Proyektor', icon: 'projector', count: 6 },
+  { id: 'audio', name: 'Audio', icon: 'audio', count: 5 },
+  { id: 'drone', name: 'Drone', icon: 'drone', count: 4 },
+  { id: 'stabilizer', name: 'Gimbal', icon: 'gimbal', count: 7 },
+  { id: 'ht', name: 'Handy Talky', icon: 'radio', count: 5 },
 ];
 
 export const PRODUCTS = [
@@ -119,8 +120,9 @@ export const REVIEWS = [
 
 export const fmt = (n) => 'Rp ' + n.toLocaleString('id-ID');
 
+// `icon` references the central Icon component; label is plain text.
 export const BADGE_MAP = {
-  protected: { label: '🔒 Dilindungi', cls: 'badge-protected' },
-  popular:   { label: '🔥 Populer',    cls: 'badge-popular' },
-  new:       { label: '✨ Baru',        cls: 'badge-new' },
+  protected: { label: 'Dilindungi', icon: 'shield', cls: 'badge-protected' },
+  popular:   { label: 'Populer',    icon: 'star',   cls: 'badge-popular' },
+  new:       { label: 'Baru',       icon: 'spark',  cls: 'badge-new' },
 };

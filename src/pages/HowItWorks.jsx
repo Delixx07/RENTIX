@@ -1,23 +1,24 @@
 import { useState } from 'react';
 import Footer from '../components/Footer';
+import Icon from '../components/Icon';
 import styles from './HowItWorks.module.css';
 
 const RENTER = [
-  ['🔍','Temukan Produk','Cari gadget berdasarkan kategori, lokasi, atau tanggal sewa yang kamu butuhkan.'],
-  ['✅','Verifikasi E-KYC','Unggah KTP/KTM sekali saja. Proses verifikasi otomatis hanya 5 menit via biometrik & AI.'],
-  ['💳','Bayar Aman','Bayar via escrow Rentix. Dana hanya cair ke pemilik setelah kamu konfirmasi terima barang.'],
-  ['📦','Terima & Cek Barang','Terima barang dari pemilik. Dokumentasikan kondisi awal bersama sebagai bukti.'],
-  ['🎯','Pakai & Nikmati','Gunakan gadget sesuai kebutuhan. Semua terlindungi Rentix Protection selama masa sewa.'],
-  ['↩️','Kembalikan Tepat Waktu','Kembalikan sesuai perjanjian. Deposit cair otomatis setelah cek kondisi selesai.'],
+  ['Temukan Produk', 'Cari gadget berdasarkan kategori, lokasi, atau tanggal sewa yang kamu butuhkan.'],
+  ['Verifikasi E-KYC', 'Unggah KTP/KTM sekali saja. Proses verifikasi otomatis hanya 5 menit via biometrik & AI.'],
+  ['Bayar Aman', 'Bayar via escrow Rentix. Dana hanya cair ke pemilik setelah kamu konfirmasi terima barang.'],
+  ['Terima & Cek Barang', 'Terima barang dari pemilik. Dokumentasikan kondisi awal bersama sebagai bukti.'],
+  ['Pakai & Nikmati', 'Gunakan gadget sesuai kebutuhan. Semua terlindungi Rentix Protection selama masa sewa.'],
+  ['Kembalikan Tepat Waktu', 'Kembalikan sesuai perjanjian. Deposit cair otomatis setelah cek kondisi selesai.'],
 ];
 
 const OWNER = [
-  ['📝','Daftarkan Barang','Upload foto, isi spesifikasi, dan tentukan harga harian/mingguan/bulanan.'],
-  ['🔐','Verifikasi & Aktifkan','Akun verifikasi E-KYC. Produk aktif setelah review tim Rentix.'],
-  ['📩','Terima Permintaan','Penyewa terverifikasi mengajukan sewa. Terima atau tolak dalam 24 jam.'],
-  ['📬','Serahkan Barang','Serahkan ke penyewa. Dokumentasikan kondisi awal bersama.'],
-  ['💰','Terima Pembayaran','Dana dari escrow cair otomatis setelah penyewa konfirmasi terima.'],
-  ['🛡️','Barang Terlindungi','Kerusakan/kehilangan? Klaim ke asuransi Rentix dalam 24 jam.'],
+  ['Daftarkan Barang', 'Upload foto, isi spesifikasi, dan tentukan harga harian/mingguan/bulanan.'],
+  ['Verifikasi & Aktifkan', 'Akun verifikasi E-KYC. Produk aktif setelah review tim Rentix.'],
+  ['Terima Permintaan', 'Penyewa terverifikasi mengajukan sewa. Terima atau tolak dalam 24 jam.'],
+  ['Serahkan Barang', 'Serahkan ke penyewa. Dokumentasikan kondisi awal bersama.'],
+  ['Terima Pembayaran', 'Dana dari escrow cair otomatis setelah penyewa konfirmasi terima.'],
+  ['Barang Terlindungi', 'Kerusakan atau kehilangan? Klaim ke asuransi Rentix dalam 24 jam.'],
 ];
 
 const FAQ = [
@@ -46,16 +47,20 @@ export default function HowItWorks() {
       <section className="section" style={{ background: '#fff' }}>
         <div className="container" style={{ maxWidth: 780 }}>
           <div className={styles.tabs}>
-            <button className={`${styles.tab} ${tab==='renter'?styles.active:''}`} onClick={() => setTab('renter')}>👥 Saya Penyewa</button>
-            <button className={`${styles.tab} ${tab==='owner'?styles.active:''}`} onClick={() => setTab('owner')}>🏪 Saya Pemilik Barang</button>
+            <button className={`${styles.tab} ${tab === 'renter' ? styles.active : ''}`} onClick={() => setTab('renter')}>
+              <Icon name="user" size={16} /> Saya Penyewa
+            </button>
+            <button className={`${styles.tab} ${tab === 'owner' ? styles.active : ''}`} onClick={() => setTab('owner')}>
+              <Icon name="store" size={16} /> Saya Pemilik Barang
+            </button>
           </div>
           <div className={styles.steps}>
-            {steps.map(([ic, t, d], i) => (
-              <div key={t} className={styles.step}>
+            {steps.map(([title, desc], i) => (
+              <div key={title} className={styles.step}>
                 <div className={styles.stepNum}>{i + 1}</div>
                 <div>
-                  <h4 className={styles.stepTitle}>{ic} {t}</h4>
-                  <p className={styles.stepDesc}>{d}</p>
+                  <h4 className={styles.stepTitle}>{title}</h4>
+                  <p className={styles.stepDesc}>{desc}</p>
                 </div>
               </div>
             ))}

@@ -5,6 +5,7 @@
 .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
 .notice { background: rgba(35,87,132,.06); border: 1px solid rgba(35,87,132,.15); border-radius: 12px; padding: 14px; margin-bottom: 18px; font-size: .82rem; color: #475569; line-height: 1.65; }
+.noticeTitle { display: flex; align-items: center; gap: 8px; font-weight: 700; color: #235784; margin-bottom: 8px; }
 .submitBtn { width: 100%; padding: 14px; border: none; background: linear-gradient(135deg,#F7AA00,#f5c842); color: #1a3f63; border-radius: 14px; font-family: 'Outfit',sans-serif; font-size: .98rem; font-weight: 800; cursor: pointer; transition: all .25s; }
 .submitBtn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(247,170,0,.4); }
 
