@@ -14,6 +14,7 @@ import Register from './pages/Register';
 import Trust from './pages/Trust';
 import Promo from './pages/Promo';
 import Dashboard from './pages/Dashboard';
+import Wishlist from './pages/Wishlist';
 import useStore from './store/useStore';
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/browse"        element={<Browse />} />
         <Route path="/product/:id"   element={<Detail />} />
         <Route path="/cart"          element={<Cart />} />
+        <Route path="/wishlist"      element={<Wishlist />} />
         <Route path="/list-item"     element={<ListItem />} />
         <Route path="/how-it-works"  element={<HowItWorks />} />
         <Route path="/trust"         element={<Trust />} />

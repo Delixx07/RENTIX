@@ -54,9 +54,9 @@ export default function HowItWorks() {
               <Icon name="store" size={16} /> Saya Pemilik Barang
             </button>
           </div>
-          <div className={styles.steps}>
+          <div className={styles.steps} key={tab}>
             {steps.map(([title, desc], i) => (
-              <div key={title} className={styles.step}>
+              <div key={title} className={styles.step} style={{ animationDelay: `${i * 0.05}s` }}>
                 <div className={styles.stepNum}>{i + 1}</div>
                 <div>
                   <h4 className={styles.stepTitle}>{title}</h4>

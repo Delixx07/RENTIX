@@ -21,6 +21,9 @@
 .orderTotal { font-weight: 800; color: #235784; font-size: .96rem; border-top: 1px solid #e2e8f0; padding-top: 10px; margin-top: 4px; }
 .notice { background: rgba(35,87,132,.06); border: 1px solid rgba(35,87,132,.15); border-radius: 12px; padding: 12px; margin: 14px 0; display: flex; gap: 10px; align-items: flex-start; color: #235784; }
 .notice p { font-size: .78rem; line-height: 1.5; }
+.kycWarn { background: rgba(247,170,0,.1); border: 1px solid rgba(247,170,0,.3); border-radius: 12px; padding: 12px; margin-bottom: 12px; display: flex; gap: 10px; align-items: flex-start; color: #b45309; }
+.kycWarn p { font-size: .78rem; line-height: 1.5; }
+.kycWarn a { color: #235784; font-weight: 700; text-decoration: underline; }
 .checkoutBtn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 13px; border: none; background: linear-gradient(135deg,#235784,#40A8C4); color: #fff; border-radius: 13px; font-family: 'Outfit',sans-serif; font-size: .96rem; font-weight: 800; cursor: pointer; transition: all .25s; }
 .checkoutBtn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(35,87,132,.35); }
 

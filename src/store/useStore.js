@@ -1,7 +1,8 @@
 import { create } from 'zustand';
+import { persist, createJSONStorage } from 'zustand/middleware';
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
 
-const useStore = create((set, get) => ({
+const useStore = create(persist((set, get) => ({
   cart: [],
   wishlist: [],
   toastMsg: '',
@@ -132,6 +133,11 @@ const useStore = create((set, get) => ({
 
   openModal: (content) => set({ modal: { open: true, content } }),
   closeModal: () => set({ modal: { open: false, content: null } }),
+}), {
+  name: 'rentix-store',
+  storage: createJSONStorage(() => localStorage),
+  // Only persist cart & wishlist — auth is handled by Supabase, UI state is transient.
+  partialize: (state) => ({ cart: state.cart, wishlist: state.wishlist }),
 }));
 
 export default useStore;

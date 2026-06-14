@@ -5,7 +5,7 @@ import Icon from './Icon';
 import styles from './Navbar.module.css';
 
 export default function Navbar() {
-  const { cart, user, profile, logout } = useStore();
+  const { cart, wishlist, user, profile, logout } = useStore();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
@@ -18,8 +18,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => setMenuOpen(false), [location]);
-
+  const closeMenu = () => setMenuOpen(false);
   const isActive = (path) => location.pathname === path;
   const initial = (profile?.full_name || user?.email || 'R')[0].toUpperCase();
 
@@ -33,7 +32,7 @@ export default function Navbar() {
           <span className={styles.logoText}>Rentix</span>
         </Link>
 
-        <div className={`${styles.links} ${menuOpen ? styles.open : ''}`}>
+        <div className={`${styles.links} ${menuOpen ? styles.open : ''}`} onClick={closeMenu}>
           {[
             { to: '/', label: 'Beranda' },
             { to: '/browse', label: 'Jelajahi' },
@@ -59,6 +58,10 @@ export default function Navbar() {
         </div>
 
         <div className={styles.actions}>
+          <Link to="/wishlist" className={styles.cartBtn} aria-label="Wishlist">
+            <Icon name="heart" size={20} />
+            {wishlist.length > 0 && <span className={styles.cartBadge}>{wishlist.length}</span>}
+          </Link>
           <Link to="/cart" className={styles.cartBtn} aria-label="Keranjang">
             <Icon name="cart" size={21} />
             {total > 0 && <span className={styles.cartBadge}>{total}</span>}

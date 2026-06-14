@@ -21,7 +21,10 @@
 
 .sectionTitle { font-family: 'Outfit',sans-serif; font-size: 1.25rem; font-weight: 800; color: var(--navy); margin-bottom: 16px; }
 .rentalList { display: flex; flex-direction: column; gap: 12px; }
-.rental { display: flex; align-items: center; gap: 16px; background: #fff; border: 1px solid var(--gray-200); border-radius: 14px; padding: 16px 20px; }
+.rental { display: flex; align-items: center; gap: 16px; background: #fff; border: 1px solid var(--gray-200); border-radius: 14px; padding: 16px 20px; transition: border-color .25s, box-shadow .25s, transform .25s cubic-bezier(.22,.61,.36,1); animation: riseIn .4s cubic-bezier(.22,.61,.36,1) both; }
+.rental:hover { border-color: var(--mist); box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+.statCard { transition: transform .25s cubic-bezier(.22,.61,.36,1), box-shadow .25s; }
+.statCard:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
 .rName { font-weight: 700; color: var(--navy); font-size: .95rem; }
 .rMeta { font-size: .82rem; color: var(--gray-500); margin-top: 3px; }
 .status { font-size: .76rem; font-weight: 700; padding: 4px 12px; border-radius: 20px; text-transform: capitalize; }
@@ -31,6 +34,14 @@
 .stDone { background: #dcfce7; color: #16a34a; }
 .stCancel { background: #fee2e2; color: #dc2626; }
 .rTotal { font-family: 'Outfit',sans-serif; font-weight: 800; color: var(--navy); min-width: 110px; text-align: right; }
+.prodThumb { width: 48px; height: 48px; border-radius: 10px; object-fit: cover; background: var(--gray-50); flex-shrink: 0; }
+.linkBtn { display: inline-flex; align-items: center; gap: 5px; background: none; border: 1.5px solid var(--gray-200); color: var(--navy); border-radius: 9px; padding: 7px 14px; font-size: .82rem; font-weight: 600; cursor: pointer; transition: var(--transition); }
+.linkBtn:hover { border-color: var(--sky); background: var(--mist-lt); }
+.dangerBtn { display: inline-flex; align-items: center; gap: 5px; background: none; border: 1.5px solid #fecaca; color: #dc2626; border-radius: 9px; padding: 7px 14px; font-size: .82rem; font-weight: 600; cursor: pointer; transition: var(--transition); }
+.dangerBtn:hover { background: #fee2e2; }
+.starPicker { display: flex; gap: 4px; margin-bottom: 12px; }
+.starBtn { background: none; border: none; padding: 0; cursor: pointer; color: var(--gray-200); line-height: 0; transition: color .15s; }
+.starBtn:hover, .starActive { color: var(--amber); }
 
 @media (max-width: 768px) {
   .stats { grid-template-columns: 1fr; }

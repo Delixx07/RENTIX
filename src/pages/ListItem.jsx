@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CATEGORIES } from '../data/products';
-import { createProduct } from '../lib/api';
+import { createProduct, uploadFile } from '../lib/api';
 import useStore from '../store/useStore';
 import Footer from '../components/Footer';
 import Icon from '../components/Icon';
@@ -14,20 +14,38 @@ export default function ListItem() {
   const { showToast, user, profile } = useStore();
   const navigate = useNavigate();
   const [submitting, setSubmitting] = useState(false);
+  const [photo, setPhoto] = useState(null);        // File yang dipilih
+  const [photoPreview, setPhotoPreview] = useState(null);
+  const photoInput = useRef(null);
   const [f, setF] = useState({
     name: '', catLabel: '', brand: '', condition: '', desc: '',
     price: '', priceWeek: '', priceMonth: '', stock: 1, city: 'Surabaya',
   });
   const set = (k) => (e) => setF((s) => ({ ...s, [k]: e.target.value }));
 
+  const handlePhoto = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setPhoto(file);
+    setPhotoPreview(URL.createObjectURL(file));
+  };
+
   const handleSubmit = async () => {
     if (!user) { showToast('Masuk dulu untuk mendaftarkan produk', '🔒'); navigate('/login'); return; }
     if (!f.name || !f.catLabel || !f.price) { showToast('Lengkapi nama, kategori, dan harga harian', '⚠️'); return; }
     setSubmitting(true);
+
+    let imgUrl = null;
+    if (photo) {
+      const up = await uploadFile('products', user.id, photo);
+      if (up.ok) imgUrl = up.url;
+    }
+
     const res = await createProduct(
       {
         name: f.name,
         cat: CAT_BY_NAME[f.catLabel] || 'camera',
+        img: imgUrl,
         price: +f.price,
         priceWeek: f.priceWeek ? +f.priceWeek : Math.round(+f.price * 6),
         priceMonth: f.priceMonth ? +f.priceMonth : Math.round(+f.price * 22),
@@ -97,9 +115,19 @@ export default function ListItem() {
             </Section>
 
             <Section label="Foto Produk">
-              <div className="upload-zone">
-                <Icon name="camera" size={28} />
-                <p><strong>Klik atau drag foto di sini</strong><br />JPG, PNG, WebP · Maks. 5 foto · Maks. 5MB/foto</p>
+              <input ref={photoInput} type="file" accept="image/*" hidden onChange={handlePhoto} />
+              <div className="upload-zone" onClick={() => photoInput.current?.click()}>
+                {photoPreview ? (
+                  <>
+                    <img src={photoPreview} alt="Pratinjau" style={{ maxHeight: 120, borderRadius: 8 }} />
+                    <p><strong>{photo?.name}</strong><br />Klik untuk ganti foto</p>
+                  </>
+                ) : (
+                  <>
+                    <Icon name="camera" size={28} />
+                    <p><strong>Klik untuk unggah foto</strong><br />JPG, PNG, WebP · Maks. 5MB</p>
+                  </>
+                )}
               </div>
             </Section>
 

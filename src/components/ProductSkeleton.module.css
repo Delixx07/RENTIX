@@ -1,0 +1,15 @@
+.card { background: #fff; border: 1px solid var(--gray-200); border-radius: 14px; overflow: hidden; }
+.img { height: 180px; background: var(--gray-100); }
+.body { padding: 14px; display: flex; flex-direction: column; gap: 9px; }
+.line { height: 11px; border-radius: 6px; background: var(--gray-100); }
+
+.img, .line { position: relative; overflow: hidden; }
+.img::after, .line::after {
+  content: ''; position: absolute; inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.65), transparent);
+  animation: shimmer 1.3s infinite;
+}
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+
+@media (max-width: 480px) { .img { height: 150px; } }

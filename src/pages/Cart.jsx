@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import useStore from '../store/useStore';
 import { fmt } from '../data/products';
 import { createRentals } from '../lib/api';
@@ -8,7 +8,7 @@ import Icon from '../components/Icon';
 import styles from './Cart.module.css';
 
 export default function Cart() {
-  const { cart, removeFromCart, updateQty, clearCart, showToast, user } = useStore();
+  const { cart, removeFromCart, updateQty, clearCart, showToast, user, profile } = useStore();
   const navigate = useNavigate();
   const [processing, setProcessing] = useState(false);
 
@@ -19,6 +19,11 @@ export default function Cart() {
 
   const handleCheckout = async () => {
     if (!user) { showToast('Masuk dulu untuk checkout', '🔒'); navigate('/login'); return; }
+    if (profile && profile.kyc_status !== 'verified') {
+      showToast('Selesaikan verifikasi E-KYC dulu sebelum menyewa', '🪪');
+      navigate('/dashboard');
+      return;
+    }
     setProcessing(true);
     const res = await createRentals(cart, user.id);
     setProcessing(false);
@@ -88,6 +93,12 @@ export default function Cart() {
                 <Icon name="shield" size={20} style={{ flexShrink: 0 }} />
                 <p>Semua item terlindungi <strong>Rentix Protection</strong>. Biaya asuransi 5% sudah termasuk.</p>
               </div>
+              {user && profile && profile.kyc_status !== 'verified' && (
+                <div className={styles.kycWarn}>
+                  <Icon name="alert" size={18} style={{ flexShrink: 0 }} />
+                  <p>Verifikasi E-KYC diperlukan sebelum checkout. <Link to="/dashboard">Verifikasi sekarang</Link></p>
+                </div>
+              )}
               <button className={styles.checkoutBtn} onClick={handleCheckout} disabled={processing}>
                 {processing ? 'Memproses…' : <>Lanjut ke Pembayaran <Icon name="arrowRight" size={18} /></>}
               </button>

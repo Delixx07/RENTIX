@@ -48,8 +48,30 @@ img { display: block; }
 
 /* ─── SHARED LAYOUT ─── */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-.page { padding-top: 72px; min-height: 100vh; animation: fadeIn .3s ease; }
-@keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+.page { padding-top: 72px; min-height: 100vh; animation: fadeIn .45s cubic-bezier(.22,.61,.36,1); }
+@keyframes fadeIn { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+
+/* ─── ANIMASI MASUK (entrance) ─── */
+@keyframes cardIn { from { opacity: 0; transform: translateY(16px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes riseIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Stagger otomatis untuk setiap kartu di product-grid.
+   `key` pada grid diubah saat filter berganti → animasi terputar ulang. */
+.product-grid > * {
+  animation: cardIn .42s cubic-bezier(.22,.61,.36,1) both;
+}
+.product-grid > *:nth-child(1)  { animation-delay: .02s; }
+.product-grid > *:nth-child(2)  { animation-delay: .06s; }
+.product-grid > *:nth-child(3)  { animation-delay: .10s; }
+.product-grid > *:nth-child(4)  { animation-delay: .14s; }
+.product-grid > *:nth-child(5)  { animation-delay: .18s; }
+.product-grid > *:nth-child(6)  { animation-delay: .22s; }
+.product-grid > *:nth-child(7)  { animation-delay: .26s; }
+.product-grid > *:nth-child(8)  { animation-delay: .30s; }
+.product-grid > *:nth-child(n+9) { animation-delay: .34s; }
+
+/* Helper untuk seksi yang ingin muncul halus */
+.anim-rise { animation: riseIn .5s cubic-bezier(.22,.61,.36,1) both; }
 
 /* ─── SECTION ─── */
 .section { padding: 80px 0; }
@@ -239,4 +261,14 @@ img { display: block; }
 @media (max-width: 360px) {
   .product-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
   .section-title { font-size: 1.3rem; }
+}
+
+/* ─── HORMATI PREFERENSI REDUCED MOTION ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

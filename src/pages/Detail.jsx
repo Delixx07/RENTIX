@@ -32,22 +32,26 @@ export default function Detail() {
 
   const [durType, setDurType] = useState('day');
   const [qty, setQty] = useState(1);
-  const today = new Date().toISOString().split('T')[0];
-  const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
+  const [today] = useState(() => new Date().toISOString().split('T')[0]);
   const [startDate, setStartDate] = useState(today);
-  const [endDate, setEndDate] = useState(tomorrow);
+  const [endDate, setEndDate] = useState(() => new Date(Date.now() + 86400000).toISOString().split('T')[0]);
 
   useEffect(() => {
-    setLoading(true);
-    fetchProduct(id).then(async (prod) => {
+    let active = true;
+    const load = async () => {
+      const prod = await fetchProduct(id);
+      if (!active) return;
       setP(prod);
       setLoading(false);
       if (prod) {
         const all = await fetchProducts();
+        if (!active) return;
         setRelated(all.filter((x) => x.cat === prod.cat && x.id !== prod.id).slice(0, 4));
         setReviews(await fetchReviews(prod.id));
       }
-    });
+    };
+    load();
+    return () => { active = false; };
   }, [id]);
 
   const { unitPrice, perLabel, daysCount } = useMemo(() => {

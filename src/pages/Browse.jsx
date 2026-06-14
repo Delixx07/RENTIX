@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { CATEGORIES } from '../data/products';
-import { fetchProducts } from '../lib/api';
+import { fetchProducts, dbStatus } from '../lib/api';
 import ProductCard from '../components/ProductCard';
+import ProductSkeleton from '../components/ProductSkeleton';
 import Footer from '../components/Footer';
 import Icon from '../components/Icon';
 import styles from './Browse.module.css';
@@ -17,13 +18,20 @@ export default function Browse() {
   const [searchParams] = useSearchParams();
   const [search, setSearch] = useState(searchParams.get('q') || '');
   const [cat, setCat] = useState(searchParams.get('cat') || 'all');
+  const rentStart = searchParams.get('start') || '';
+  const rentEnd = searchParams.get('end') || '';
   const [sort, setSort] = useState('popular');
-  const [maxPrice, setMaxPrice] = useState(500000);
+  const [maxPrice, setMaxPrice] = useState(600000);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [offline, setOffline] = useState(false);
 
   useEffect(() => {
-    fetchProducts().then((p) => { setProducts(p); setLoading(false); });
+    fetchProducts().then((p) => {
+      setProducts(p);
+      setOffline(dbStatus() !== 'online');
+      setLoading(false);
+    });
   }, []);
 
   const filtered = products
@@ -44,7 +52,11 @@ export default function Browse() {
           <div className={styles.top}>
             <div>
               <h1 className={styles.title}>Jelajahi Produk</h1>
-              <p className={styles.subtitle}>Temukan gadget terbaik untukmu</p>
+              <p className={styles.subtitle}>
+                {rentStart && rentEnd
+                  ? `Periode sewa: ${rentStart} sampai ${rentEnd}`
+                  : 'Temukan gadget terbaik untukmu'}
+              </p>
             </div>
             <div className={styles.searchWrap}>
               <Icon name="search" size={18} />
@@ -74,7 +86,7 @@ export default function Browse() {
                 <span>Rp 0</span>
                 <span>Rp {(maxPrice/1000).toFixed(0)}rb</span>
               </div>
-              <input type="range" className={styles.slider} min={50000} max={500000} step={10000} value={maxPrice} onChange={e => setMaxPrice(+e.target.value)} />
+              <input type="range" className={styles.slider} min={50000} max={600000} step={10000} value={maxPrice} onChange={e => setMaxPrice(+e.target.value)} />
             </div>
             <div className={styles.filterCard}>
               <div className={styles.filterTitle}>Keamanan</div>
@@ -88,7 +100,7 @@ export default function Browse() {
                 <label key={f} className={styles.chk}><input type="checkbox" defaultChecked={f.includes('Sekarang')} /><span>{f}</span></label>
               ))}
             </div>
-            <button className={styles.clearBtn} onClick={() => { setCat('all'); setSearch(''); setMaxPrice(500000); }}>
+            <button className={styles.clearBtn} onClick={() => { setCat('all'); setSearch(''); setMaxPrice(600000); }}>
               <Icon name="refresh" size={16} /> Reset Filter
             </button>
           </aside>
@@ -104,14 +116,20 @@ export default function Browse() {
                 <option value="price-desc">Harga Tertinggi</option>
               </select>
             </div>
+            {offline && !loading && (
+              <div className={styles.offlineBar}>
+                <Icon name="alert" size={16} /> Menampilkan data contoh — backend Supabase belum aktif.
+              </div>
+            )}
             {loading ? (
-              <div className="empty-state"><div className="es-icon"><Icon name="box" size={40} /></div><h3>Memuat produk…</h3></div>
+              <ProductSkeleton count={6} />
             ) : filtered.length > 0 ? (
-              <div className="product-grid">
+              // key berubah saat filter/sort berganti → animasi stagger diputar ulang
+              <div className="product-grid" key={`${cat}-${sort}-${search}-${maxPrice}`}>
                 {filtered.map(p => <ProductCard key={p.id} product={p} />)}
               </div>
             ) : (
-              <div className="empty-state">
+              <div className="empty-state anim-rise">
                 <div className="es-icon"><Icon name="search" size={40} /></div>
                 <h3>Tidak ada hasil</h3>
                 <p>Coba ubah kata kunci atau filter</p>

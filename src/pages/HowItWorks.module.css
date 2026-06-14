@@ -2,18 +2,21 @@
 .heroTitle { font-family: 'Outfit',sans-serif; font-size: 2rem; font-weight: 800; color: #fff; margin: 12px 0 10px; }
 .heroSub { color: rgba(255,255,255,.7); max-width: 480px; margin: 0 auto; font-size: .95rem; line-height: 1.7; }
 .tabs { display: flex; gap: 8px; margin-bottom: 40px; background: #f1f5f9; border-radius: 14px; padding: 6px; }
-.tab { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 10px; border: none; border-radius: 10px; font-size: .88rem; font-weight: 600; cursor: pointer; background: transparent; color: #475569; transition: all .25s; }
+.tab { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 10px; border: none; border-radius: 10px; font-size: .88rem; font-weight: 600; cursor: pointer; background: transparent; color: #475569; transition: background .3s cubic-bezier(.22,.61,.36,1), color .25s, box-shadow .3s; }
 .tab.active { background: #fff; color: #235784; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+.tab:not(.active):hover { color: #235784; }
 .steps { display: flex; flex-direction: column; }
-.step { display: flex; gap: 24px; padding: 28px 0; border-bottom: 1px solid #f1f5f9; }
+.step { display: flex; gap: 24px; padding: 28px 0; border-bottom: 1px solid #f1f5f9; animation: stepIn .45s cubic-bezier(.22,.61,.36,1) both; }
 .step:last-child { border-bottom: none; }
+@keyframes stepIn { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: translateX(0); } }
 .stepNum { flex-shrink: 0; width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg,#235784,#40A8C4); color: #fff; font-family: 'Outfit',sans-serif; font-size: 1.1rem; font-weight: 800; display: flex; align-items: center; justify-content: center; }
 .stepTitle { font-size: 1rem; font-weight: 700; color: #235784; margin-bottom: 6px; }
 .stepDesc { font-size: .88rem; color: #475569; line-height: 1.65; }
 .faqCard { background: #fff; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; }
 .faqQ { width: 100%; padding: 18px 20px; background: none; border: none; text-align: left; font-size: .93rem; font-weight: 600; color: #235784; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Inter',sans-serif; }
-.faqQ span { font-size: 1.3rem; color: #40A8C4; }
-.faqA { padding: 0 20px 18px; font-size: .87rem; color: #475569; line-height: 1.7; }
+.faqQ span { font-size: 1.3rem; color: #40A8C4; transition: transform .3s cubic-bezier(.34,1.56,.64,1); display: inline-block; }
+.faqA { padding: 0 20px 18px; font-size: .87rem; color: #475569; line-height: 1.7; animation: faqOpen .3s cubic-bezier(.22,.61,.36,1); }
+@keyframes faqOpen { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
 
 /* ── TABLET (≤768px) ── */
 @media (max-width: 768px) {

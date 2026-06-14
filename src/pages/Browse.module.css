@@ -14,14 +14,19 @@
 .filterCard { background: #fff; border-radius: 14px; padding: 18px; border: 1px solid #e2e8f0; }
 .filterTitle { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #94a3b8; margin-bottom: 12px; }
 .chips { display: flex; flex-wrap: wrap; gap: 7px; }
-.chip { display: inline-flex; align-items: center; gap: 5px; padding: 5px 11px; border-radius: 50px; border: 1.5px solid #e2e8f0; font-size: .78rem; font-weight: 500; color: #475569; cursor: pointer; background: #fff; transition: all .25s; }
-.chip:hover, .chip.active { border-color: #40A8C4; color: #235784; background: #e8f5f7; }
+.chip { display: inline-flex; align-items: center; gap: 5px; padding: 5px 11px; border-radius: 50px; border: 1.5px solid #e2e8f0; font-size: .78rem; font-weight: 500; color: #475569; cursor: pointer; background: #fff; transition: background .25s cubic-bezier(.4,0,.2,1), border-color .25s cubic-bezier(.4,0,.2,1), color .25s, transform .18s cubic-bezier(.34,1.56,.64,1); }
+.chip:hover { border-color: #40A8C4; color: #235784; background: #e8f5f7; transform: translateY(-1px); }
+.chip.active { border-color: #40A8C4; color: #235784; background: #e8f5f7; transform: scale(1.04); }
+.chip:active { transform: scale(.96); }
+.chip svg { transition: transform .25s; }
+.chip.active svg { transform: scale(1.1); }
 .rangeRow { display: flex; justify-content: space-between; font-size: .78rem; font-weight: 600; color: #235784; margin-bottom: 8px; }
 .slider { width: 100%; accent-color: #40A8C4; }
 .chk { display: flex; align-items: center; gap: 8px; cursor: pointer; margin-bottom: 8px; font-size: .84rem; color: #334155; }
 .chk input { accent-color: #40A8C4; width: 15px; height: 15px; flex-shrink: 0; }
 .clearBtn { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; padding: 9px; border: 1.5px solid #e2e8f0; border-radius: 10px; background: none; font-size: .82rem; color: #64748b; cursor: pointer; transition: all .25s; }
 .clearBtn:hover { border-color: #40A8C4; color: #235784; }
+.offlineBar { display: flex; align-items: center; gap: 8px; background: rgba(247,170,0,.1); border: 1px solid rgba(247,170,0,.3); color: #b45309; border-radius: 10px; padding: 10px 14px; font-size: .82rem; margin-bottom: 16px; }
 .resultsBar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px; }
 .count { font-size: .88rem; color: #475569; }
 .count strong { color: #235784; }

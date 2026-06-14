@@ -1,19 +1,26 @@
 .card {
   background: #fff; border-radius: 14px; border: 1px solid #e2e8f0;
-  overflow: hidden; cursor: pointer; transition: all .25s; position: relative;
+  overflow: hidden; cursor: pointer; position: relative;
+  transition: transform .3s cubic-bezier(.22,.61,.36,1), box-shadow .3s cubic-bezier(.22,.61,.36,1), border-color .3s;
+  will-change: transform;
 }
-.card:hover { transform: translateY(-5px); box-shadow: 0 10px 40px rgba(35,87,132,.16); border-color: #BCDBDF; }
+.card:hover { transform: translateY(-6px); box-shadow: 0 14px 44px rgba(35,87,132,.18); border-color: #BCDBDF; }
+.card:active { transform: translateY(-2px) scale(.995); }
 .imgWrap { position: relative; background: #f8fafc; height: 180px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.img { max-height: 150px; max-width: 90%; object-fit: contain; transition: transform .25s; }
-.card:hover .img { transform: scale(1.05); }
+.img { max-height: 150px; max-width: 90%; object-fit: contain; transition: transform .4s cubic-bezier(.22,.61,.36,1); }
+.card:hover .img { transform: scale(1.07); }
 .badges { position: absolute; top: 10px; left: 10px; display: flex; flex-direction: column; gap: 5px; }
 .wishlistBtn {
   position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; border-radius: 50%;
   background: #fff; border: none; display: flex; align-items: center; justify-content: center;
-  cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,.08); transition: all .25s; color: #94a3b8;
+  cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,.08); color: #94a3b8;
+  transition: color .2s, background .2s, transform .25s cubic-bezier(.34,1.56,.64,1);
 }
-.wishlistBtn:hover { color: #ef4444; }
+.wishlistBtn:hover { color: #ef4444; transform: scale(1.12); }
+.wishlistBtn:active { transform: scale(.9); }
 .wishlistBtn.liked { color: #ef4444; }
+.wishlistBtn.liked svg { animation: heartPop .35s cubic-bezier(.34,1.56,.64,1); }
+@keyframes heartPop { 0% { transform: scale(.6); } 60% { transform: scale(1.25); } 100% { transform: scale(1); } }
 .info { padding: 14px; }
 .name { font-size: .88rem; font-weight: 700; color: #1e293b; margin-bottom: 5px; line-height: 1.3;
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
@@ -34,10 +41,11 @@
 .addBtn {
   width: 32px; height: 32px; border-radius: 9px; border: none;
   background: #235784; color: #fff;
-  display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all .25s;
-  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0;
+  transition: background .2s, transform .25s cubic-bezier(.34,1.56,.64,1);
 }
-.addBtn:hover { background: #40A8C4; transform: scale(1.08); }
+.addBtn:hover { background: #40A8C4; transform: scale(1.12) rotate(90deg); }
+.addBtn:active { transform: scale(.92); }
 
 /* ── MOBILE (≤480px) ── */
 @media (max-width: 480px) {

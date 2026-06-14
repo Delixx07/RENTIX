@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { CATEGORIES, fmt } from '../data/products';
 import { fetchProducts, fetchReviews } from '../lib/api';
 import ProductCard from '../components/ProductCard';
+import ProductSkeleton from '../components/ProductSkeleton';
 import Footer from '../components/Footer';
 import Icon from '../components/Icon';
 import Stars from '../components/Stars';
@@ -61,6 +62,8 @@ export default function Home() {
   const navigate = useNavigate();
   const { openModal, closeModal, showToast } = useStore();
   const [search, setSearch] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const [products, setProducts] = useState([]);
   const [reviews, setReviews] = useState([]);
   const particleRef = useRef(null);
@@ -85,6 +88,14 @@ export default function Home() {
 
   const featured = products[0];
   const today = new Date().toISOString().split('T')[0];
+
+  const runSearch = () => {
+    const params = new URLSearchParams();
+    if (search) params.set('q', search);
+    if (startDate) params.set('start', startDate);
+    if (endDate) params.set('end', endDate);
+    navigate(`/browse?${params.toString()}`);
+  };
 
   const openKycModal = () => openModal(
     <div>
@@ -187,19 +198,19 @@ export default function Home() {
           <div className={styles.searchBar}>
             <div className={styles.sbField}>
               <span className={styles.sbLabel}>Cari Produk</span>
-              <input className={styles.sbInput} placeholder="Kamera, laptop, proyektor..." value={search} onChange={(e) => setSearch(e.target.value)} />
+              <input className={styles.sbInput} placeholder="Kamera, laptop, proyektor..." value={search} onChange={(e) => setSearch(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && runSearch()} />
             </div>
             <div className={styles.sbDivider} />
             <div className={styles.sbField}>
               <span className={styles.sbLabel}>Tanggal Mulai</span>
-              <input type="date" className={styles.sbInput} min={today} />
+              <input type="date" className={styles.sbInput} min={today} value={startDate} onChange={(e) => setStartDate(e.target.value)} />
             </div>
             <div className={styles.sbDivider} />
             <div className={styles.sbField}>
               <span className={styles.sbLabel}>Tanggal Selesai</span>
-              <input type="date" className={styles.sbInput} min={today} />
+              <input type="date" className={styles.sbInput} min={startDate || today} value={endDate} onChange={(e) => setEndDate(e.target.value)} />
             </div>
-            <button className={styles.sbBtn} onClick={() => navigate(`/browse?q=${search}`)}>
+            <button className={styles.sbBtn} onClick={runSearch}>
               <Icon name="search" size={18} /> Cari
             </button>
           </div>
@@ -233,9 +244,9 @@ export default function Home() {
             <h2 className="section-title">Produk Paling Banyak Disewa</h2>
             <p className="section-sub">Dipilih berdasarkan rating tertinggi dan ulasan terpercaya dari pengguna Rentix.</p>
           </div>
-          <div className="product-grid">
-            {products.slice(0, 4).map((p) => <ProductCard key={p.id} product={p} />)}
-          </div>
+          {products.length === 0
+            ? <ProductSkeleton count={4} />
+            : <div className="product-grid">{products.slice(0, 4).map((p) => <ProductCard key={p.id} product={p} />)}</div>}
           <div style={{ textAlign: 'center', marginTop: 36 }}>
             <Link to="/browse" className="btn-lg navy">Lihat Semua Produk <Icon name="arrowRight" size={18} /></Link>
           </div>

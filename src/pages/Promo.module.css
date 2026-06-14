@@ -8,8 +8,8 @@
 .sbDesc { font-size: .86rem; color: var(--gray-600); margin-top: 2px; line-height: 1.55; }
 
 .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-.promoCard { border: 1px dashed var(--mist); border-radius: 16px; padding: 24px; background: var(--gray-50); transition: var(--transition); }
-.promoCard:hover { border-color: var(--sky); box-shadow: var(--shadow); }
+.promoCard { border: 1px dashed var(--mist); border-radius: 16px; padding: 24px; background: var(--gray-50); transition: border-color .25s, box-shadow .3s, transform .3s cubic-bezier(.22,.61,.36,1); animation: riseIn .45s cubic-bezier(.22,.61,.36,1) both; }
+.promoCard:hover { border-color: var(--sky); box-shadow: var(--shadow); transform: translateY(-4px); }
 .promoCard.locked { opacity: .72; }
 .promoTop { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
 .aud { display: inline-flex; align-items: center; gap: 5px; font-size: .78rem; font-weight: 700; color: var(--sky); background: var(--mist-lt); padding: 4px 11px; border-radius: 20px; }

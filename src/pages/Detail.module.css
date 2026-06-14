@@ -51,7 +51,8 @@
 .bookPriceVal { font-family: 'Outfit',sans-serif; font-size: 1.7rem; font-weight: 800; color: #235784; }
 .bookPricePer { font-size: .83rem; color: #94a3b8; }
 .durTabs { display: flex; gap: 5px; margin-bottom: 14px; }
-.durTab { flex: 1; padding: 8px; border: 1.5px solid #e2e8f0; border-radius: 9px; background: #fff; font-size: .8rem; font-weight: 600; color: #475569; cursor: pointer; transition: all .25s; }
+.durTab { flex: 1; padding: 8px; border: 1.5px solid #e2e8f0; border-radius: 9px; background: #fff; font-size: .8rem; font-weight: 600; color: #475569; cursor: pointer; transition: background .25s, border-color .25s, color .25s, transform .2s cubic-bezier(.34,1.56,.64,1); }
+.durTab:active { transform: scale(.95); }
 .durActive { border-color: #235784; color: #235784; background: #e8f5f7; }
 .dateRow { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
 .dateField label { display: block; font-size: .72rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 5px; }
