@@ -14,7 +14,7 @@ export const PRODUCTS = [
   {
     id: 1, cat: 'camera',
     name: 'Sony Alpha A7 III Mirrorless',
-    img: '/products/camera-1.jpg',
+    img: '/product_camera.png',
     price: 350000, priceWeek: 2000000, priceMonth: 7000000,
     rating: 4.9, reviews: 128,
     owner: 'Budi Santoso', ownerVerified: true,
@@ -26,7 +26,7 @@ export const PRODUCTS = [
   {
     id: 2, cat: 'laptop',
     name: 'MacBook Pro M3 Pro 14"',
-    img: '/products/laptop-1.jpg',
+    img: '/product_laptop.png',
     price: 200000, priceWeek: 1200000, priceMonth: 4000000,
     rating: 4.8, reviews: 96,
     owner: 'Rini Wahyu', ownerVerified: true,
@@ -38,7 +38,7 @@ export const PRODUCTS = [
   {
     id: 3, cat: 'projector',
     name: 'Epson EB-X51 Projector Full HD',
-    img: '/products/projector-1.jpg',
+    img: '/product_projector.png',
     price: 150000, priceWeek: 800000, priceMonth: 2500000,
     rating: 4.7, reviews: 54,
     owner: 'Event Pro ID', ownerVerified: true,
@@ -50,7 +50,7 @@ export const PRODUCTS = [
   {
     id: 4, cat: 'ht',
     name: 'Motorola DP1400 HT Set (4 unit)',
-    img: '/products/ht-1.jpg',
+    img: '/product_ht.png',
     price: 80000, priceWeek: 450000, priceMonth: 1500000,
     rating: 4.6, reviews: 37,
     owner: 'Rizky Event Supply', ownerVerified: true,
@@ -62,7 +62,7 @@ export const PRODUCTS = [
   {
     id: 5, cat: 'drone',
     name: 'DJI Air 3 Drone 4K',
-    img: '/products/drone-1.jpg',
+    img: '/product_drone.png',
     price: 400000, priceWeek: 2400000, priceMonth: 8500000,
     rating: 4.9, reviews: 73,
     owner: 'AerialShot Studio', ownerVerified: true,
@@ -74,7 +74,7 @@ export const PRODUCTS = [
   {
     id: 6, cat: 'stabilizer',
     name: 'DJI RS 3 Gimbal Stabilizer',
-    img: '/products/gimbal-1.jpg',
+    img: '/product_gimbal.png',
     price: 120000, priceWeek: 680000, priceMonth: 2200000,
     rating: 4.7, reviews: 45,
     owner: 'Cinematech Rental', ownerVerified: true,
@@ -86,7 +86,7 @@ export const PRODUCTS = [
   {
     id: 7, cat: 'audio',
     name: 'Shure SM7dB Mic Podcast Set',
-    img: '/products/audio-1.jpg',
+    img: '/product_microphone.png',
     price: 90000, priceWeek: 520000, priceMonth: 1700000,
     rating: 4.8, reviews: 29,
     owner: 'SoundLab Surabaya', ownerVerified: true,
@@ -98,7 +98,7 @@ export const PRODUCTS = [
   {
     id: 8, cat: 'laptop',
     name: 'ASUS ROG Strix G16 RTX 4070',
-    img: '/products/laptop-2.jpg',
+    img: '/product_laptop.png',
     price: 175000, priceWeek: 1000000, priceMonth: 3500000,
     rating: 4.6, reviews: 61,
     owner: 'GameGear Rental', ownerVerified: false,
@@ -110,7 +110,7 @@ export const PRODUCTS = [
   {
     id: 9, cat: 'camera',
     name: 'Canon EOS R6 Mark II',
-    img: '/products/camera-2.jpg',
+    img: '/product_camera.png',
     price: 330000, priceWeek: 1900000, priceMonth: 6500000,
     rating: 4.8, reviews: 87,
     owner: 'FotoPro Studio', ownerVerified: true,
@@ -122,7 +122,7 @@ export const PRODUCTS = [
   {
     id: 10, cat: 'camera',
     name: 'Fujifilm X-T5 + 18-55mm',
-    img: '/products/camera-3.jpg',
+    img: '/product_camera.png',
     price: 280000, priceWeek: 1600000, priceMonth: 5500000,
     rating: 4.7, reviews: 64,
     owner: 'Lensa Kita', ownerVerified: true,
@@ -134,7 +134,7 @@ export const PRODUCTS = [
   {
     id: 11, cat: 'camera',
     name: 'GoPro HERO12 Black',
-    img: '/products/camera-1.jpg',
+    img: '/product_camera.png',
     price: 95000, priceWeek: 520000, priceMonth: 1800000,
     rating: 4.6, reviews: 112,
     owner: 'ActionCam ID', ownerVerified: true,
@@ -146,7 +146,7 @@ export const PRODUCTS = [
   {
     id: 12, cat: 'laptop',
     name: 'Dell XPS 15 OLED i7',
-    img: '/products/laptop-3.jpg',
+    img: '/product_laptop.png',
     price: 185000, priceWeek: 1050000, priceMonth: 3600000,
     rating: 4.7, reviews: 53,
     owner: 'TechRent Surabaya', ownerVerified: true,
@@ -158,7 +158,7 @@ export const PRODUCTS = [
   {
     id: 13, cat: 'laptop',
     name: 'Lenovo Legion 5 Ryzen 7',
-    img: '/products/laptop-1.jpg',
+    img: '/product_laptop.png',
     price: 160000, priceWeek: 920000, priceMonth: 3200000,
     rating: 4.5, reviews: 48,
     owner: 'GameGear Rental', ownerVerified: false,
@@ -170,7 +170,7 @@ export const PRODUCTS = [
   {
     id: 14, cat: 'projector',
     name: 'BenQ TH685 Gaming Projector',
-    img: '/products/projector-2.jpg',
+    img: '/product_projector.png',
     price: 135000, priceWeek: 750000, priceMonth: 2400000,
     rating: 4.6, reviews: 41,
     owner: 'Layar Lebar Rental', ownerVerified: true,
@@ -182,7 +182,7 @@ export const PRODUCTS = [
   {
     id: 15, cat: 'projector',
     name: 'Epson EB-FH52 Full HD',
-    img: '/products/projector-3.jpg',
+    img: '/product_projector.png',
     price: 170000, priceWeek: 950000, priceMonth: 3000000,
     rating: 4.7, reviews: 33,
     owner: 'Event Pro ID', ownerVerified: true,
@@ -194,7 +194,7 @@ export const PRODUCTS = [
   {
     id: 16, cat: 'audio',
     name: 'Rode Wireless GO II (Dual)',
-    img: '/products/audio-2.jpg',
+    img: '/product_microphone.png',
     price: 85000, priceWeek: 480000, priceMonth: 1600000,
     rating: 4.8, reviews: 58,
     owner: 'SoundLab Surabaya', ownerVerified: true,
@@ -206,7 +206,7 @@ export const PRODUCTS = [
   {
     id: 17, cat: 'audio',
     name: 'Zoom H6 Audio Recorder',
-    img: '/products/audio-3.jpg',
+    img: '/product_microphone.png',
     price: 75000, priceWeek: 420000, priceMonth: 1400000,
     rating: 4.6, reviews: 27,
     owner: 'AudioWorks', ownerVerified: true,
@@ -218,7 +218,7 @@ export const PRODUCTS = [
   {
     id: 18, cat: 'drone',
     name: 'DJI Mini 4 Pro',
-    img: '/products/drone-2.jpg',
+    img: '/product_drone.png',
     price: 280000, priceWeek: 1600000, priceMonth: 5800000,
     rating: 4.9, reviews: 69,
     owner: 'AerialShot Studio', ownerVerified: true,
@@ -230,7 +230,7 @@ export const PRODUCTS = [
   {
     id: 19, cat: 'stabilizer',
     name: 'Zhiyun Crane M3',
-    img: '/products/gimbal-2.jpg',
+    img: '/product_gimbal.png',
     price: 95000, priceWeek: 540000, priceMonth: 1850000,
     rating: 4.5, reviews: 31,
     owner: 'Cinematech Rental', ownerVerified: true,
@@ -242,7 +242,7 @@ export const PRODUCTS = [
   {
     id: 20, cat: 'ht',
     name: 'Baofeng UV-82 HT Set (6 unit)',
-    img: '/products/ht-2.jpg',
+    img: '/product_ht.png',
     price: 70000, priceWeek: 390000, priceMonth: 1300000,
     rating: 4.4, reviews: 52,
     owner: 'Rizky Event Supply', ownerVerified: true,
@@ -254,7 +254,7 @@ export const PRODUCTS = [
   {
     id: 21, cat: 'camera',
     name: "Sony ZV-E10 Vlog Kit",
-    img: '/products/camera-2.jpg',
+    img: '/product_camera.png',
     price: 160000, priceWeek: 900000, priceMonth: 3100000,
     rating: 4.7, reviews: 76,
     owner: "VlogGear ID", ownerVerified: true,
@@ -266,7 +266,7 @@ export const PRODUCTS = [
   {
     id: 22, cat: 'camera',
     name: "Nikon Z6 II Full-Frame",
-    img: '/products/camera-3.jpg',
+    img: '/product_camera.png',
     price: 300000, priceWeek: 1750000, priceMonth: 6000000,
     rating: 4.8, reviews: 54,
     owner: "FotoPro Studio", ownerVerified: true,
@@ -278,7 +278,7 @@ export const PRODUCTS = [
   {
     id: 23, cat: 'camera',
     name: "Canon G7X Mark III",
-    img: '/products/camera-1.jpg',
+    img: '/product_camera.png',
     price: 140000, priceWeek: 800000, priceMonth: 2700000,
     rating: 4.6, reviews: 91,
     owner: "PocketCam", ownerVerified: true,
@@ -290,7 +290,7 @@ export const PRODUCTS = [
   {
     id: 24, cat: 'camera',
     name: "Sony A7 IV Body",
-    img: '/products/camera-2.jpg',
+    img: '/product_camera.png',
     price: 420000, priceWeek: 2500000, priceMonth: 8800000,
     rating: 4.9, reviews: 38,
     owner: "Lensa Kita", ownerVerified: true,
@@ -302,7 +302,7 @@ export const PRODUCTS = [
   {
     id: 25, cat: 'camera',
     name: "Insta360 X4 360 Cam",
-    img: '/products/camera-3.jpg',
+    img: '/product_camera.png',
     price: 130000, priceWeek: 720000, priceMonth: 2500000,
     rating: 4.7, reviews: 63,
     owner: "ActionCam ID", ownerVerified: true,
@@ -314,7 +314,7 @@ export const PRODUCTS = [
   {
     id: 26, cat: 'laptop',
     name: "MacBook Air M3 13\"",
-    img: '/products/laptop-2.jpg',
+    img: '/product_laptop.png',
     price: 150000, priceWeek: 850000, priceMonth: 2900000,
     rating: 4.8, reviews: 82,
     owner: "TechRent Surabaya", ownerVerified: true,
@@ -326,7 +326,7 @@ export const PRODUCTS = [
   {
     id: 27, cat: 'laptop',
     name: "HP Spectre x360 14",
-    img: '/products/laptop-3.jpg',
+    img: '/product_laptop.png',
     price: 170000, priceWeek: 980000, priceMonth: 3400000,
     rating: 4.6, reviews: 44,
     owner: "TechRent Surabaya", ownerVerified: true,
@@ -338,7 +338,7 @@ export const PRODUCTS = [
   {
     id: 28, cat: 'laptop',
     name: "ASUS Zenbook 14 OLED",
-    img: '/products/laptop-1.jpg',
+    img: '/product_laptop.png',
     price: 145000, priceWeek: 820000, priceMonth: 2800000,
     rating: 4.5, reviews: 57,
     owner: "GameGear Rental", ownerVerified: false,
@@ -350,7 +350,7 @@ export const PRODUCTS = [
   {
     id: 29, cat: 'laptop',
     name: "MacBook Pro M3 Max 16\"",
-    img: '/products/laptop-2.jpg',
+    img: '/product_laptop.png',
     price: 350000, priceWeek: 2100000, priceMonth: 7500000,
     rating: 4.9, reviews: 29,
     owner: "TechRent Surabaya", ownerVerified: true,
@@ -362,7 +362,7 @@ export const PRODUCTS = [
   {
     id: 30, cat: 'projector',
     name: "Anker Nebula Capsule 3",
-    img: '/products/projector-1.jpg',
+    img: '/product_projector.png',
     price: 90000, priceWeek: 500000, priceMonth: 1700000,
     rating: 4.5, reviews: 48,
     owner: "Layar Lebar Rental", ownerVerified: true,
@@ -374,7 +374,7 @@ export const PRODUCTS = [
   {
     id: 31, cat: 'projector',
     name: "Epson EB-2247U WUXGA",
-    img: '/products/projector-2.jpg',
+    img: '/product_projector.png',
     price: 195000, priceWeek: 1100000, priceMonth: 3700000,
     rating: 4.7, reviews: 26,
     owner: "Event Pro ID", ownerVerified: true,
@@ -386,7 +386,7 @@ export const PRODUCTS = [
   {
     id: 32, cat: 'projector',
     name: "ViewSonic M2e Portable",
-    img: '/products/projector-3.jpg',
+    img: '/product_projector.png',
     price: 110000, priceWeek: 620000, priceMonth: 2100000,
     rating: 4.4, reviews: 35,
     owner: "Layar Lebar Rental", ownerVerified: true,
@@ -398,7 +398,7 @@ export const PRODUCTS = [
   {
     id: 33, cat: 'audio',
     name: "Shure SM58 Mic Vokal",
-    img: '/products/audio-1.jpg',
+    img: '/product_microphone.png',
     price: 45000, priceWeek: 250000, priceMonth: 850000,
     rating: 4.7, reviews: 73,
     owner: "SoundLab Surabaya", ownerVerified: true,
@@ -410,7 +410,7 @@ export const PRODUCTS = [
   {
     id: 34, cat: 'audio',
     name: "Yamaha MG10XU Mixer",
-    img: '/products/audio-2.jpg',
+    img: '/product_microphone.png',
     price: 120000, priceWeek: 680000, priceMonth: 2300000,
     rating: 4.6, reviews: 31,
     owner: "AudioWorks", ownerVerified: true,
@@ -422,7 +422,7 @@ export const PRODUCTS = [
   {
     id: 35, cat: 'audio',
     name: "JBL EON715 Speaker Aktif",
-    img: '/products/audio-3.jpg',
+    img: '/product_microphone.png',
     price: 150000, priceWeek: 850000, priceMonth: 2900000,
     rating: 4.8, reviews: 42,
     owner: "SoundLab Surabaya", ownerVerified: true,
@@ -434,7 +434,7 @@ export const PRODUCTS = [
   {
     id: 36, cat: 'audio',
     name: "Rode NT1 5th Gen Mic",
-    img: '/products/audio-1.jpg',
+    img: '/product_microphone.png',
     price: 80000, priceWeek: 450000, priceMonth: 1550000,
     rating: 4.7, reviews: 28,
     owner: "AudioWorks", ownerVerified: true,
@@ -446,7 +446,7 @@ export const PRODUCTS = [
   {
     id: 37, cat: 'drone',
     name: "DJI Mavic 3 Pro",
-    img: '/products/drone-3.jpg',
+    img: '/product_drone.png',
     price: 520000, priceWeek: 3100000, priceMonth: 11000000,
     rating: 4.9, reviews: 47,
     owner: "AerialShot Studio", ownerVerified: true,
@@ -458,7 +458,7 @@ export const PRODUCTS = [
   {
     id: 38, cat: 'drone',
     name: "DJI Avata 2 FPV",
-    img: '/products/drone-1.jpg',
+    img: '/product_drone.png',
     price: 300000, priceWeek: 1700000, priceMonth: 6000000,
     rating: 4.7, reviews: 39,
     owner: "AerialShot Studio", ownerVerified: true,
@@ -470,7 +470,7 @@ export const PRODUCTS = [
   {
     id: 39, cat: 'drone',
     name: "DJI Air 2S",
-    img: '/products/drone-2.jpg',
+    img: '/product_drone.png',
     price: 230000, priceWeek: 1300000, priceMonth: 4600000,
     rating: 4.6, reviews: 55,
     owner: "SkyView Rental", ownerVerified: true,
@@ -482,7 +482,7 @@ export const PRODUCTS = [
   {
     id: 40, cat: 'stabilizer',
     name: "DJI RS 4 Pro",
-    img: '/products/gimbal-3.jpg',
+    img: '/product_gimbal.png',
     price: 160000, priceWeek: 900000, priceMonth: 3100000,
     rating: 4.8, reviews: 33,
     owner: "Cinematech Rental", ownerVerified: true,
@@ -494,7 +494,7 @@ export const PRODUCTS = [
   {
     id: 41, cat: 'stabilizer',
     name: "DJI Osmo Mobile 6",
-    img: '/products/gimbal-1.jpg',
+    img: '/product_gimbal.png',
     price: 55000, priceWeek: 300000, priceMonth: 1050000,
     rating: 4.5, reviews: 88,
     owner: "Cinematech Rental", ownerVerified: true,
@@ -506,7 +506,7 @@ export const PRODUCTS = [
   {
     id: 42, cat: 'stabilizer',
     name: "Hohem iSteady MT2 Kit",
-    img: '/products/gimbal-2.jpg',
+    img: '/product_gimbal.png',
     price: 70000, priceWeek: 400000, priceMonth: 1400000,
     rating: 4.4, reviews: 24,
     owner: "CreatorKit", ownerVerified: true,
@@ -518,7 +518,7 @@ export const PRODUCTS = [
   {
     id: 43, cat: 'ht',
     name: "Motorola XiR P3688 (4 unit)",
-    img: '/products/ht-3.jpg',
+    img: '/product_ht.png',
     price: 110000, priceWeek: 620000, priceMonth: 2100000,
     rating: 4.6, reviews: 29,
     owner: "Rizky Event Supply", ownerVerified: true,
@@ -530,7 +530,7 @@ export const PRODUCTS = [
   {
     id: 44, cat: 'ht',
     name: "Icom IC-V86 (2 unit)",
-    img: '/products/ht-1.jpg',
+    img: '/product_ht.png',
     price: 60000, priceWeek: 340000, priceMonth: 1150000,
     rating: 4.5, reviews: 33,
     owner: "Rizky Event Supply", ownerVerified: true,
@@ -542,7 +542,7 @@ export const PRODUCTS = [
   {
     id: 45, cat: 'ht',
     name: "Baofeng UV-5R (4 unit)",
-    img: '/products/ht-2.jpg',
+    img: '/product_ht.png',
     price: 45000, priceWeek: 250000, priceMonth: 880000,
     rating: 4.3, reviews: 61,
     owner: "Rizky Event Supply", ownerVerified: true,
@@ -554,7 +554,7 @@ export const PRODUCTS = [
   {
     id: 46, cat: 'camera',
     name: "DJI Pocket 3 Creator Combo",
-    img: '/products/camera-1.jpg',
+    img: '/product_camera.png',
     price: 150000, priceWeek: 850000, priceMonth: 2900000,
     rating: 4.8, reviews: 57,
     owner: "PocketCam", ownerVerified: true,
@@ -566,7 +566,7 @@ export const PRODUCTS = [
   {
     id: 47, cat: 'laptop',
     name: "Microsoft Surface Laptop 5",
-    img: '/products/laptop-3.jpg',
+    img: '/product_laptop.png',
     price: 155000, priceWeek: 880000, priceMonth: 3000000,
     rating: 4.5, reviews: 36,
     owner: "TechRent Surabaya", ownerVerified: true,
@@ -578,7 +578,7 @@ export const PRODUCTS = [
   {
     id: 48, cat: 'audio',
     name: "Sennheiser e835 Mic (2 unit)",
-    img: '/products/audio-2.jpg',
+    img: '/product_microphone.png',
     price: 60000, priceWeek: 340000, priceMonth: 1150000,
     rating: 4.6, reviews: 22,
     owner: "SoundLab Surabaya", ownerVerified: true,
@@ -590,7 +590,7 @@ export const PRODUCTS = [
   {
     id: 49, cat: 'projector',
     name: "XGIMI Horizon Ultra 4K",
-    img: '/products/projector-1.jpg',
+    img: '/product_projector.png',
     price: 260000, priceWeek: 1500000, priceMonth: 5200000,
     rating: 4.8, reviews: 19,
     owner: "Layar Lebar Rental", ownerVerified: true,
@@ -602,7 +602,7 @@ export const PRODUCTS = [
   {
     id: 50, cat: 'drone',
     name: "DJI Neo Mini Drone",
-    img: '/products/drone-3.jpg',
+    img: '/product_drone.png',
     price: 90000, priceWeek: 500000, priceMonth: 1750000,
     rating: 4.5, reviews: 44,
     owner: "SkyView Rental", ownerVerified: true,

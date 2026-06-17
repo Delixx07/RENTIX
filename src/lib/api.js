@@ -1,18 +1,18 @@
 import { supabase, isSupabaseConfigured } from './supabase';
 import { PRODUCTS as STATIC_PRODUCTS, REVIEWS as STATIC_REVIEWS, priceBreakdown } from '../data/products';
 
-// Default image per category (file lokal di /public/products), dipakai bila
-// sebuah listing tidak punya foto, atau saat gambar gagal dimuat (onError).
+// Foto gadget asli per kategori (file lokal di /public). Dipakai sebagai gambar
+// produk, untuk listing tanpa foto, dan saat gambar gagal dimuat (onError).
 const CAT_IMAGE = {
-  camera: '/products/camera-1.jpg',
-  laptop: '/products/laptop-1.jpg',
-  projector: '/products/projector-1.jpg',
-  audio: '/products/audio-1.jpg',
-  drone: '/products/drone-1.jpg',
-  stabilizer: '/products/gimbal-1.jpg',
-  ht: '/products/ht-1.jpg',
+  camera: '/product_camera.png',
+  laptop: '/product_laptop.png',
+  projector: '/product_projector.png',
+  audio: '/product_microphone.png',
+  drone: '/product_drone.png',
+  stabilizer: '/product_gimbal.png',
+  ht: '/product_ht.png',
 };
-export const fallbackImage = (cat) => CAT_IMAGE[cat] || '/products/camera-1.jpg';
+export const fallbackImage = (cat) => CAT_IMAGE[cat] || '/product_camera.png';
 
 // Map a Supabase product row (snake_case) → app product shape (camelCase)
 function mapProduct(row) {
