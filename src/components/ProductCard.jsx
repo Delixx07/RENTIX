@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import useStore from '../store/useStore';
 import { fmt, BADGE_MAP } from '../data/products';
+import { fallbackImage } from '../lib/api';
 import Icon from './Icon';
 import Stars from './Stars';
 import styles from './ProductCard.module.css';
@@ -14,10 +15,16 @@ export default function ProductCard({ product }) {
   const handleWishlist = (e) => { e.stopPropagation(); toggleWishlist(product.id); };
   const handleAdd = (e) => { e.stopPropagation(); addToCart(product); };
 
+  // Bila gambar (mis. dari URL online) gagal dimuat, ganti ke gambar kategori lokal.
+  const handleImgError = (e) => {
+    const fb = fallbackImage(product.cat);
+    if (e.currentTarget.src.indexOf(fb) === -1) e.currentTarget.src = fb;
+  };
+
   return (
     <div className={styles.card} onClick={openDetail}>
       <div className={styles.imgWrap}>
-        <img src={product.img} alt={product.name} className={styles.img} loading="lazy" />
+        <img src={product.img} alt={product.name} className={styles.img} loading="lazy" onError={handleImgError} />
 
         <div className={styles.badges}>
           {product.isPremium && (

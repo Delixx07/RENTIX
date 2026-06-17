@@ -64,14 +64,11 @@
 .hamburger span.hOpen:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ── TABLET (≤768px) ── */
-@media (max-width: 768px) {
-  .inner { padding: 0 16px; height: 64px; gap: 12px; }
-  .logoText { font-size: 1.3rem; }
-  .logoImg { height: 34px; }
-
+/* Tablet & small laptop: pakai menu hamburger agar bar tidak sesak */
+@media (max-width: 960px) {
   .links {
     display: none;
-    position: absolute; top: 64px; left: 0; right: 0;
+    position: absolute; top: 72px; left: 0; right: 0;
     background: #fff; flex-direction: column; align-items: stretch;
     padding: 8px 16px 16px; gap: 4px;
     border-bottom: 1px solid #e2e8f0;
@@ -85,6 +82,13 @@
   .hamburger { display: flex; }
   .actions .authLinks { display: none; }
   .actions { gap: 4px; }
+}
+
+@media (max-width: 768px) {
+  .inner { padding: 0 16px; height: 64px; gap: 12px; }
+  .logoText { font-size: 1.3rem; }
+  .logoImg { height: 34px; }
+  .links { top: 64px; }
 }
 
 /* ── MOBILE PHONES (≤480px) ── */

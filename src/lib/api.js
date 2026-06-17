@@ -1,17 +1,18 @@
 import { supabase, isSupabaseConfigured } from './supabase';
-import { PRODUCTS as STATIC_PRODUCTS, REVIEWS as STATIC_REVIEWS } from '../data/products';
+import { PRODUCTS as STATIC_PRODUCTS, REVIEWS as STATIC_REVIEWS, priceBreakdown } from '../data/products';
 
-// Default image per category, used when a listing has no uploaded photo.
+// Default image per category (file lokal di /public/products), dipakai bila
+// sebuah listing tidak punya foto, atau saat gambar gagal dimuat (onError).
 const CAT_IMAGE = {
-  camera: '/product_camera.png',
-  laptop: '/product_laptop.png',
-  projector: '/product_projector.png',
-  audio: '/product_microphone.png',
-  drone: '/product_drone.png',
-  stabilizer: '/product_gimbal.png',
-  ht: '/product_ht.png',
+  camera: '/products/camera-1.jpg',
+  laptop: '/products/laptop-1.jpg',
+  projector: '/products/projector-1.jpg',
+  audio: '/products/audio-1.jpg',
+  drone: '/products/drone-1.jpg',
+  stabilizer: '/products/gimbal-1.jpg',
+  ht: '/products/ht-1.jpg',
 };
-export const fallbackImage = (cat) => CAT_IMAGE[cat] || '/product_camera.png';
+export const fallbackImage = (cat) => CAT_IMAGE[cat] || '/products/camera-1.jpg';
 
 // Map a Supabase product row (snake_case) → app product shape (camelCase)
 function mapProduct(row) {
@@ -185,8 +186,7 @@ export async function createRentals(items, renterId) {
   if (!(await dbReady())) return { ok: false, reason: 'db-offline' };
   const rows = items.map((i) => {
     const days = i.days || 1;
-    const subtotal = i.price * i.qty * days;
-    const insurance = Math.round(subtotal * 0.05);
+    const { subtotal, insurance, total } = priceBreakdown(i.price * i.qty * days);
     return {
       renter_id: renterId,
       product_id: i.id,
@@ -197,7 +197,7 @@ export async function createRentals(items, renterId) {
       days,
       subtotal,
       insurance,
-      total: subtotal + insurance,
+      total, // sudah termasuk asuransi 2% + PPN 11%
       status: 'escrow',
     };
   });

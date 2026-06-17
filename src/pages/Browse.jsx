@@ -8,12 +8,6 @@ import Footer from '../components/Footer';
 import Icon from '../components/Icon';
 import styles from './Browse.module.css';
 
-const SECURITY_FILTERS = [
-  { label: 'Rentix Protected', defaultChecked: true },
-  { label: 'Pemilik Terverifikasi', defaultChecked: true },
-  { label: 'Rating 4,5+', defaultChecked: false },
-];
-
 export default function Browse() {
   const [searchParams] = useSearchParams();
   const [search, setSearch] = useState(searchParams.get('q') || '');
@@ -22,6 +16,11 @@ export default function Browse() {
   const rentEnd = searchParams.get('end') || '';
   const [sort, setSort] = useState('popular');
   const [maxPrice, setMaxPrice] = useState(600000);
+  // Filter aktif (controlled)
+  const [fProtected, setFProtected] = useState(false);
+  const [fVerified, setFVerified] = useState(false);
+  const [fRating, setFRating] = useState(false);
+  const [fAvailable, setFAvailable] = useState(false);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [offline, setOffline] = useState(false);
@@ -34,16 +33,27 @@ export default function Browse() {
     });
   }, []);
 
+  const resetFilters = () => {
+    setCat('all'); setSearch(''); setMaxPrice(600000);
+    setFProtected(false); setFVerified(false); setFRating(false); setFAvailable(false);
+  };
+
   const filtered = products
     .filter(p => cat === 'all' || p.cat === cat)
     .filter(p => !search || p.name.toLowerCase().includes(search.toLowerCase()))
     .filter(p => p.price <= maxPrice)
+    .filter(p => !fProtected || (p.badges || []).includes('protected'))
+    .filter(p => !fVerified || p.ownerVerified)
+    .filter(p => !fRating || p.rating >= 4.5)
+    .filter(p => !fAvailable || (p.available && p.stock > 0))
     .sort((a, b) => {
       if (sort === 'price-asc') return a.price - b.price;
       if (sort === 'price-desc') return b.price - a.price;
       if (sort === 'rating') return b.rating - a.rating;
       return b.reviews - a.reviews;
     });
+
+  const activeFilterKey = `${cat}-${sort}-${search}-${maxPrice}-${fProtected}-${fVerified}-${fRating}-${fAvailable}`;
 
   return (
     <div className="page">
@@ -90,17 +100,15 @@ export default function Browse() {
             </div>
             <div className={styles.filterCard}>
               <div className={styles.filterTitle}>Keamanan</div>
-              {SECURITY_FILTERS.map(f => (
-                <label key={f.label} className={styles.chk}><input type="checkbox" defaultChecked={f.defaultChecked} /><span>{f.label}</span></label>
-              ))}
+              <label className={styles.chk}><input type="checkbox" checked={fProtected} onChange={e => setFProtected(e.target.checked)} /><span>Rentix Protected</span></label>
+              <label className={styles.chk}><input type="checkbox" checked={fVerified} onChange={e => setFVerified(e.target.checked)} /><span>Pemilik Terverifikasi</span></label>
+              <label className={styles.chk}><input type="checkbox" checked={fRating} onChange={e => setFRating(e.target.checked)} /><span>Rating 4,5+</span></label>
             </div>
             <div className={styles.filterCard}>
               <div className={styles.filterTitle}>Ketersediaan</div>
-              {['Tersedia Sekarang','Tersedia Minggu Ini'].map(f => (
-                <label key={f} className={styles.chk}><input type="checkbox" defaultChecked={f.includes('Sekarang')} /><span>{f}</span></label>
-              ))}
+              <label className={styles.chk}><input type="checkbox" checked={fAvailable} onChange={e => setFAvailable(e.target.checked)} /><span>Tersedia Sekarang</span></label>
             </div>
-            <button className={styles.clearBtn} onClick={() => { setCat('all'); setSearch(''); setMaxPrice(600000); }}>
+            <button className={styles.clearBtn} onClick={resetFilters}>
               <Icon name="refresh" size={16} /> Reset Filter
             </button>
           </aside>
@@ -125,7 +133,7 @@ export default function Browse() {
               <ProductSkeleton count={6} />
             ) : filtered.length > 0 ? (
               // key berubah saat filter/sort berganti → animasi stagger diputar ulang
-              <div className="product-grid" key={`${cat}-${sort}-${search}-${maxPrice}`}>
+              <div className="product-grid" key={activeFilterKey}>
                 {filtered.map(p => <ProductCard key={p.id} product={p} />)}
               </div>
             ) : (

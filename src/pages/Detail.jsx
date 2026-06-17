@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { fmt } from '../data/products';
-import { fetchProduct, fetchProducts, fetchReviews, createReview } from '../lib/api';
+import { fmt, priceBreakdown, INSURANCE_RATE, VAT_RATE } from '../data/products';
+import { fetchProduct, fetchProducts, fetchReviews, createReview, fallbackImage } from '../lib/api';
 import ProductCard from '../components/ProductCard';
 import Footer from '../components/Footer';
 import Icon from '../components/Icon';
@@ -62,8 +62,8 @@ export default function Detail() {
   }, [durType, startDate, endDate, p]);
 
   const subtotal = unitPrice * qty;
-  const insurance = Math.round(subtotal * 0.05);
-  const total = subtotal + insurance;
+  const { insurance, vat, total } = priceBreakdown(subtotal);
+  const handleImgError = (e) => { if (p) e.currentTarget.src = fallbackImage(p.cat); };
 
   if (loading) return <div className="page"><div className="container empty-state"><div className="es-icon"><Icon name="box" size={40} /></div><h3>Memuat produk…</h3></div></div>;
   if (!p) return <div className="page"><div className="container empty-state"><div className="es-icon"><Icon name="search" size={40} /></div><h3>Produk tidak ditemukan</h3><Link to="/browse">Kembali ke Browse</Link></div><Footer /></div>;
@@ -118,10 +118,10 @@ export default function Detail() {
         <div className={styles.grid}>
           {/* LEFT */}
           <div>
-            <div className={styles.galleryMain}><img src={p.img} alt={p.name} /></div>
+            <div className={styles.galleryMain}><img src={p.img} alt={p.name} onError={handleImgError} /></div>
             <div className={styles.thumbs}>
               {[0, 1, 2, 3].map(i => (
-                <div key={i} className={`${styles.thumb} ${i === 0 ? styles.thumbActive : ''}`}><img src={p.img} alt="" /></div>
+                <div key={i} className={`${styles.thumb} ${i === 0 ? styles.thumbActive : ''}`}><img src={p.img} alt="" onError={handleImgError} /></div>
               ))}
             </div>
 
@@ -221,7 +221,8 @@ export default function Detail() {
               </div>
               <div className={styles.summary}>
                 <div className={styles.sumRow}><span>{fmt(unitPrice)} × {perLabel} × {qty}</span><span>{fmt(subtotal)}</span></div>
-                <div className={styles.sumRow}><span className={styles.sumIcon}><Icon name="shield" size={14} /> Rentix Protection <span className={styles.proBadge}>5%</span></span><span>{fmt(insurance)}</span></div>
+                <div className={styles.sumRow}><span className={styles.sumIcon}><Icon name="shield" size={14} /> Asuransi <span className={styles.proBadge}>{Math.round(INSURANCE_RATE * 100)}%</span></span><span>{fmt(insurance)}</span></div>
+                <div className={styles.sumRow}><span>PPN <span className={styles.proBadge}>{Math.round(VAT_RATE * 100)}%</span></span><span>{fmt(vat)}</span></div>
                 <div className={`${styles.sumRow} ${styles.sumTotal}`}><span>Total</span><span>{fmt(total)}</span></div>
               </div>
               <button className={styles.bookBtn} onClick={handleBook}><Icon name="cart" size={18} /> Pesan Sekarang</button>

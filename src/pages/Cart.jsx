@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import useStore from '../store/useStore';
-import { fmt } from '../data/products';
-import { createRentals } from '../lib/api';
+import { fmt, priceBreakdown, INSURANCE_RATE, VAT_RATE } from '../data/products';
+import { createRentals, fallbackImage } from '../lib/api';
 import Footer from '../components/Footer';
 import Icon from '../components/Icon';
 import styles from './Cart.module.css';
@@ -14,8 +14,7 @@ export default function Cart() {
 
   const lineTotal = (i) => i.price * i.qty * (i.days || 1);
   const subtotal = cart.reduce((s, i) => s + lineTotal(i), 0);
-  const insurance = Math.round(subtotal * 0.05);
-  const total = subtotal + insurance;
+  const { insurance, vat, total } = priceBreakdown(subtotal);
 
   const handleCheckout = async () => {
     if (!user) { showToast('Masuk dulu untuk checkout', '🔒'); navigate('/login'); return; }
@@ -56,7 +55,7 @@ export default function Cart() {
             <div className={styles.items}>
               {cart.map(item => (
                 <div key={item.id} className={styles.item}>
-                  <img src={item.img} alt={item.name} className={styles.itemImg} />
+                  <img src={item.img} alt={item.name} className={styles.itemImg} onError={(e) => { e.currentTarget.src = fallbackImage(item.cat); }} />
                   <div className={styles.itemInfo}>
                     <div className={styles.itemName}>{item.name}</div>
                     <div className={styles.itemMeta}>
@@ -87,11 +86,12 @@ export default function Cart() {
                 </div>
               ))}
               <div className={styles.orderRow}><span>Subtotal</span><span>{fmt(subtotal)}</span></div>
-              <div className={styles.orderRow}><span className={styles.rowIcon}><Icon name="shield" size={14} /> Rentix Protection</span><span>{fmt(insurance)}</span></div>
+              <div className={styles.orderRow}><span className={styles.rowIcon}><Icon name="shield" size={14} /> Asuransi ({Math.round(INSURANCE_RATE * 100)}%)</span><span>{fmt(insurance)}</span></div>
+              <div className={styles.orderRow}><span>PPN ({Math.round(VAT_RATE * 100)}%)</span><span>{fmt(vat)}</span></div>
               <div className={`${styles.orderRow} ${styles.orderTotal}`}><span>Total</span><span>{fmt(total)}</span></div>
               <div className={styles.notice}>
                 <Icon name="shield" size={20} style={{ flexShrink: 0 }} />
-                <p>Semua item terlindungi <strong>Rentix Protection</strong>. Biaya asuransi 5% sudah termasuk.</p>
+                <p>Semua item terlindungi <strong>Rentix Protection</strong>. Biaya asuransi {Math.round(INSURANCE_RATE * 100)}% & PPN {Math.round(VAT_RATE * 100)}% sudah termasuk.</p>
               </div>
               {user && profile && profile.kyc_status !== 'verified' && (
                 <div className={styles.kycWarn}>
